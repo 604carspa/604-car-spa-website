@@ -148,6 +148,12 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
+        /* Custom Tab Styles */
+        .tab-button.active {
+            color: #fff;
+            background-color: #1E90FF;
+            box-shadow: 0 4px 10px rgba(30, 144, 255, 0.4);
+        }
     </style>
     
     <script type="application/ld+json">
@@ -434,49 +440,78 @@
         </section>
         
         <section id="gallery" class="py-20 sm:py-28 container mx-auto px-6 bg-highlight-bg border-y border-primary-blue/10">
-            <h2 class="text-4xl font-extrabold text-center mb-4 text-white">Results You Can Trust</h2>
-            <p class="text-lg text-center text-gray-300 mb-16 max-w-2xl mx-auto">A glimpse into the mirror-like finishes and immaculate interiors achieved by 604 Car Spa. Your photos are here!</p>
+            <h2 class="text-4xl font-extrabold text-center mb-4 text-white">Our Results: Browse Photo Albums</h2>
+            <p class="text-lg text-center text-gray-300 mb-12 max-w-2xl mx-auto">Click a tab below to see before & after results for different service focus areas.</p>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                
-                <div class="space-y-6">
-                    <img src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/cb9e83c4-d243-4ebe-80e7-37cc37432ae0.jpeg" 
-                         alt="Glossy black Mercedes C300 after exterior detailing, showing reflection."
-                         class="gallery-img h-96 object-cover" 
-                         loading="lazy" />
-
-                    <img src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/b7799077-b0d1-4a06-9cf9-604344e295cc.jpeg" 
-                         alt="Close-up of a restored black luxury wheel and tire."
-                         class="gallery-img h-48 object-cover" 
-                         loading="lazy" />
-                </div>
-                
-                <div class="space-y-6 lg:mt-12">
-                    <img src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/bf0f8d8b-0fdf-4e09-8175-366982395feb.jpeg" 
-                         alt="Rear view of a clean red SUV, showing clear paint and taillights."
-                         class="gallery-img h-48 object-cover" 
-                         loading="lazy" />
-
-                    <img src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/96ed5618-449f-480f-9888-35a895504783.jpeg" 
-                         alt="Immaculately detailed vehicle dashboard and steering wheel."
-                         class="gallery-img h-96 object-cover" 
-                         loading="lazy" />
-                </div>
-                
-                <div class="space-y-6">
-                    <img src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/a9950232-6ac2-47e9-90c0-41d8a2f1d90a.jpeg" 
-                         alt="Detailed leather seats and center console of a vehicle."
-                         class="gallery-img h-48 object-cover" 
-                         loading="lazy" />
-
-                    <img src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/e84a1ad4-3933-4398-b5c2-cfb8a0dffeb7.jpeg" 
-                         alt="Full exterior view of a polished silver SUV after detailing."
-                         class="gallery-img h-96 object-cover" 
-                         loading="lazy" />
+            <div class="max-w-6xl mx-auto">
+                <div class="flex flex-wrap justify-center space-x-2 sm:space-x-4 mb-10 border-b border-gray-800 pb-4">
+                    <button class="tab-button active text-lg font-bold py-3 px-6 rounded-full transition duration-200" data-tab="exterior">
+                        ✨ Exterior Finish
+                    </button>
+                    <button class="tab-button text-lg font-bold py-3 px-6 rounded-full text-gray-400 hover:text-white hover:bg-dark-card transition duration-200" data-tab="interior">
+                        🛋️ Interior Deep Clean
+                    </button>
+                    <button class="tab-button text-lg font-bold py-3 px-6 rounded-full text-gray-400 hover:text-white hover:bg-dark-card transition duration-200" data-tab="specialized">
+                        ⚙️ Specialized & Wheels
+                    </button>
                 </div>
 
+                <div class="tab-content-container">
+                    
+                    <div id="exterior" class="tab-content grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" data-tab-content>
+                        <img src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/cb9e83c4-d243-4ebe-80e7-37cc37432ae0.jpeg" 
+                             alt="Glossy black Mercedes C300 after exterior detailing, showing reflection."
+                             class="gallery-img h-96 object-cover" 
+                             loading="lazy" />
+
+                        <img src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/bf0f8d8b-0fdf-4e09-8175-366982395feb.jpeg" 
+                             alt="Rear view of a clean red SUV, showing clear paint and taillights."
+                             class="gallery-img h-48 object-cover lg:mt-12" 
+                             loading="lazy" />
+
+                        <img src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/e84a1ad4-3933-4398-b5c2-cfb8a0dffeb7.jpeg" 
+                             alt="Full exterior view of a polished silver SUV after detailing."
+                             class="gallery-img h-96 object-cover" 
+                             loading="lazy" />
+                    </div>
+
+                    <div id="interior" class="tab-content hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" data-tab-content>
+                        <img src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/96ed5618-449f-480f-9888-35a895504783.jpeg" 
+                             alt="Immaculately detailed vehicle dashboard and steering wheel."
+                             class="gallery-img h-96 object-cover" 
+                             loading="lazy" />
+
+                        <img src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/a9950232-6ac2-47e9-90c0-41d8a2f1d90a.jpeg" 
+                             alt="Detailed leather seats and center console of a vehicle."
+                             class="gallery-img h-48 object-cover lg:mt-12" 
+                             loading="lazy" />
+
+                        <img src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/72c6e465-6d7d-45ea-921f-43fc4f6f870d.jpeg" 
+                             alt="Deep cleaned rear seat and door panel."
+                             class="gallery-img h-96 object-cover" 
+                             loading="lazy" />
+                    </div>
+
+                    <div id="specialized" class="tab-content hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" data-tab-content>
+                        <img src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/b7799077-b0d1-4a06-9cf9-604344e295cc.jpeg" 
+                             alt="Close-up of a restored black luxury wheel and tire."
+                             class="gallery-img h-48 object-cover" 
+                             loading="lazy" />
+                        
+                        <img src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/0dd7c294-05ae-45a2-9d5f-395e64c3fef0.jpeg" 
+                             alt="Clean and dressed engine bay."
+                             class="gallery-img h-96 object-cover lg:mt-12" 
+                             loading="lazy" />
+                             
+                        <img src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/e315563e-d453-43b2-b9f3-5f1e36e56149.jpeg" 
+                            alt="Close-up of highly reflective paint after polishing and sealant."
+                            class="gallery-img h-48 object-cover" 
+                            loading="lazy" />
+                    </div>
+                </div>
             </div>
         </section>
+
 
         <section id="faq" class="py-20 sm:py-28 container mx-auto px-6">
             <h2 class="text-4xl font-extrabold text-center mb-4 text-white">Frequently Asked Questions</h2>
@@ -796,6 +831,9 @@
                 serviceSelect.addEventListener('change', toggleAddons);
                 toggleAddons(); // Initial run
             }
+            
+            // Initial Gallery Tab Setup
+            setupGalleryTabs();
         });
 
         // Modal functions
@@ -811,6 +849,39 @@
                 hideModal();
             }
         });
+
+        // --- NEW GALLERY TAB JAVASCRIPT ---
+        function setupGalleryTabs() {
+            const tabs = document.querySelectorAll('.tab-button');
+            const contents = document.querySelectorAll('.tab-content');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const targetId = tab.getAttribute('data-tab');
+
+                    // 1. Deactivate all tabs and hide all content
+                    tabs.forEach(t => {
+                        t.classList.remove('active');
+                        t.classList.add('text-gray-400', 'hover:text-white', 'hover:bg-dark-card');
+                    });
+                    contents.forEach(c => c.classList.add('hidden'));
+
+                    // 2. Activate clicked tab and show target content
+                    tab.classList.add('active');
+                    tab.classList.remove('text-gray-400', 'hover:text-white', 'hover:bg-dark-card');
+                    
+                    document.getElementById(targetId).classList.remove('hidden');
+                });
+            });
+            
+            // Set initial active tab state (Exterior)
+            if (tabs.length > 0) {
+                // Ensure the default active class is set on load
+                tabs[0].classList.add('active');
+                tabs[0].classList.remove('text-gray-400', 'hover:text-white', 'hover:bg-dark-card');
+            }
+        }
+        // --- END NEW GALLERY TAB JAVASCRIPT ---
     </script>
 </body>
 </html>
