@@ -202,7 +202,7 @@
                 </div>
                 <p class="text-xs text-gray-500 ml-9 font-light tracking-wider">Vehicle Spa</p>
             </a>
-            <!-- **FIXED: Reduced space-x and text size for better fit on tablet/desktop** -->
+            <!-- FIXED: Reduced space-x and text size for better fit on tablet/desktop -->
             <div class="hidden md:flex space-x-4 text-base">
                 <a href="#services" class="hover:text-primary-blue transition duration-200">Packages</a>
                 <a href="#addons" class="hover:text-primary-blue transition duration-200">Add-Ons</a>
@@ -642,7 +642,7 @@
 
                     <!-- Contact Form (Netlify Form) -->
                     <div class="p-8 bg-dark-card rounded-xl shadow-2xl shadow-black/50 border border-gray-800">
-                        <form name="booking" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="contact-form-internal" class="space-y-6">
+                        <form name="booking" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="space-y-6">
                             <!-- Hidden Netlify Fields -->
                             <input type="hidden" name="form-name" value="booking" />
                             <div hidden>
@@ -860,8 +860,10 @@
         const serviceSelect = document.getElementById('service');
         const addonGroup = document.getElementById('addon-group');
         const addonMessage = document.getElementById('addon-message');
-        const contactForm = document.getElementById('contact-form-internal');
-        const formMessage = document.getElementById('form-message');
+        
+        // **REMOVED: contactForm and formMessage constants are no longer strictly needed but keeping them here doesn't hurt.**
+        // const contactForm = document.getElementById('contact-form-internal');
+        // const formMessage = document.getElementById('form-message');
 
         /**
          * The addon selection is now always visible and enabled for all auto packages.
@@ -892,54 +894,13 @@
             }
         }
 
-        // Form Submission Logic
+        // Form Submission Logic: **THE CUSTOM EVENT LISTENER HAS BEEN REMOVED**
+        // Netlify handles the submission directly now.
+
         document.addEventListener('DOMContentLoaded', () => {
             if (serviceSelect) {
                 serviceSelect.addEventListener('change', toggleAddons);
                 toggleAddons(); // Initial run
-            }
-
-            if (contactForm) {
-                contactForm.addEventListener('submit', function(e) {
-                    
-                    const agreeTerms = document.getElementById('agree_terms').checked;
-                    if (!agreeTerms) {
-                        return; 
-                    }
-
-                    // Log form data for simulation
-                    const formData = new FormData(e.target);
-                    const selectedAddons = [];
-                    addonGroup.querySelectorAll('input[type="checkbox"]:checked:not(:disabled)').forEach(checkbox => {
-                         selectedAddons.push(checkbox.value);
-                    });
-                    
-                    console.log('--- 604 Car Spa Appointment Submitted (Sent to Netlify) ---');
-                    console.log('Package:', formData.get('service'));
-                    console.log('Name:', formData.get('name'));
-                    console.log('Email:', formData.get('email'));
-                    console.log('Phone:', formData.get('phone'));
-                    console.log('Address:', formData.get('address'));
-                    console.log('Utilities Provided:', formData.get('utilities_provided')); // Log new utilities field
-                    console.log('Add-Ons:', selectedAddons.length > 0 ? selectedAddons.join(', ') : 'None');
-                    console.log('----------------------------------------------------');
-
-                    e.preventDefault(); 
-                    
-                    // Display success message for in-canvas feedback
-                    if (formMessage) {
-                        formMessage.classList.remove('hidden');
-                    }
-                    e.target.reset();
-                    document.getElementById('agree_terms').checked = false; 
-                    toggleAddons();
-
-                    setTimeout(() => {
-                        if (formMessage) {
-                            formMessage.classList.add('hidden');
-                        }
-                    }, 5000);
-                });
             }
         });
 
