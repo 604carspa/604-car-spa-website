@@ -3,12 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Load Inter font from Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     
-    <!-- SEO & OPEN GRAPH METADATA -->
     <meta name="description" content="Mobile car detailing in Metro Vancouver (604). Premium spa packages for cars, SUVs, pickups, RVs, and boats, delivered right to your door.">
     <meta property="og:title" content="604 Car Spa - Mobile Auto Detailing">
     <meta property="og:type" content="website">
@@ -18,9 +16,7 @@
     
     <title>604 Car Spa - Premium Mobile Auto Detailing</title>
     
-    <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Configure Tailwind for Inter Font and Custom Colors (HD Black and Deep Blue) -->
     <script>
         tailwind.config = {
             theme: {
@@ -154,7 +150,6 @@
         }
     </style>
     
-    <!-- Schema.org JSON-LD for Local SEO -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -181,24 +176,19 @@
 </head>
 <body class="bg-dark-bg text-white">
 
-    <!-- Floating Booking Button (Unique Feature) -->
     <a href="#booking" class="sticky-book-btn fixed bottom-4 right-4 bg-primary-blue text-dark-bg font-extrabold py-3 px-6 rounded-full shadow-2xl shadow-primary-blue/50 transition duration-300 transform hover:scale-105 md:hidden shimmer-button">
         BOOK NOW
     </a>
 
-    <!-- Header & Navigation -->
     <header class="sticky top-0 z-50 bg-dark-bg/95 backdrop-blur-sm shadow-xl shadow-black/50">
         <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-            <!-- LOGO: 604 Car Spa + small Vehicle Spa subtitle -->
             <a href="#home" class="flex flex-col items-start leading-none -space-y-1">
                 <div class="flex items-center">
-                    <!-- Water Droplet Icon (Spa/Cleanliness) - Added aria-hidden -->
                     <svg class="w-7 h-7 text-primary-blue mr-2" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 21s-8-8-8-12c0-4.418 3.582-8 8-8s8 3.582 8 8c0 4-8 12-8 12z" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 11c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z" fill="#1E90FF"/></svg>
                     <span class="text-3xl font-extrabold tracking-tighter text-white">604</span><span class="text-3xl font-extrabold tracking-tighter text-primary-blue font-light">carspa</span>
                 </div>
                 <p class="text-xs text-gray-500 ml-9 font-light tracking-wider">Vehicle Spa</p>
             </a>
-            <!-- FIXED: Reduced space-x and text size for better fit on tablet/desktop -->
             <div class="hidden md:flex space-x-4 text-base">
                 <a href="#services" class="hover:text-primary-blue transition duration-200">Packages</a>
                 <a href="#addons" class="hover:text-primary-blue transition duration-200">Add-Ons</a>
@@ -206,22 +196,18 @@
                 <a href="#faq" class="hover:text-primary-blue transition duration-200">FAQ</a>
                 <a href="#booking" class="bg-primary-blue text-dark-bg font-bold py-1 px-4 rounded-full hover:bg-blue-500 transition duration-200 shimmer-button">Book Appointment</a>
             </div>
-            <!-- Mobile Menu Button -->
             <a href="#booking" class="md:hidden p-2 text-primary-blue font-bold border border-primary-blue rounded-lg shimmer-button">Book</a>
         </nav>
     </header>
 
-    <!-- 1.1 SATISFACTION GUARANTEE BANNER (PROMINENTLY PLACED) -->
     <section id="guarantee" class="bg-primary-blue/10 py-4 border-b border-primary-blue/50">
         <div class="container mx-auto px-6 max-w-6xl flex flex-col md:flex-row items-center justify-center space-y-2 md:space-y-0 md:space-x-8">
-            <!-- Checkmark Icon - Added aria-hidden -->
             <svg class="w-8 h-8 text-primary-blue flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
             
             <h3 class="text-xl font-extrabold text-center text-white leading-tight">
                 <span class="text-primary-blue">100% SATISFACTION GUARANTEE</span>
             </h3>
             
-            <!-- Increased contrast on this text -->
             <p class="text-center md:text-left text-sm text-gray-300 max-w-md hidden sm:block">
                 We ensure you're completely happy before we collect payment.
             </p>
@@ -229,13 +215,10 @@
     </section>
 
     <main>
-        <!-- 1. HOME VIEW: Immersive Before & After Split (WITH IMAGES) -->
         <section id="home" class="before-after-split">
-            <!-- Left Side: BEFORE - Using a high-contrast interior shot -->
             <div class="before-side relative flex items-center justify-center p-10 min-h-[50vh] md:min-h-full">
-                <!-- PHOTO 1: Dirty Interior (Placeholder URL used for demonstration) -->
-                <img src="https://placehold.co/800x1200/111111/ffffff?text=BEFORE+IMAGE+NEEDED" 
-                     alt="Vehicle interior before detailing: showing dirt and dust." 
+                <img src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/ba04a5df-16f2-4a3a-997f-91d912d7f0e7.jpeg" 
+                     alt="Vehicle interior before detailing: showing dirt and dust on the center console and cup holders." 
                      class="absolute inset-0 w-full h-full object-cover opacity-60"
                      loading="lazy" />
                 <div class="text-center relative z-10">
@@ -244,11 +227,9 @@
                 </div>
             </div>
 
-            <!-- Right Side: AFTER - Using a clean exterior shot (Mercedes C300) -->
             <div class="after-side relative flex items-center justify-center p-10 min-h-[50vh] md:min-h-full">
-                 <!-- PHOTO 2: Clean Exterior (Placeholder URL used for demonstration) -->
-                <img src="https://placehold.co/800x1200/1E90FF/ffffff?text=AFTER+MERCEDES+EXTERIOR" 
-                     alt="After detailing: a clean, glossy black Mercedes C300 convertible." 
+                 <img src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/3ccc89b0-ce48-4d9d-8848-51b3b6a0487b.jpeg" 
+                     alt="After detailing: a clean, glossy black Mercedes G-Wagon exterior with a deep reflection." 
                      class="absolute inset-0 w-full h-full object-cover opacity-60"
                      loading="lazy" />
                 <div class="text-center relative z-10">
@@ -262,20 +243,16 @@
             </div>
         </section>
 
-        <!-- 2. SERVICES / PRICING SECTION -->
         <section id="services" class="py-20 sm:py-28 container mx-auto px-6 bg-highlight-bg border-y border-primary-blue/10">
             <h2 class="text-4xl font-extrabold text-center mb-4 text-white">Our Signature Spa Packages for All Vehicles</h2>
-            <!-- Increased contrast on this text -->
             <p class="text-lg text-center text-gray-300 mb-16 max-w-3xl mx-auto">Choose the level of restoration your vehicle needs. We service **cars, SUVs, pickup trucks, RVs, and marine vessels.**</p>
 
             <div class="max-w-4xl mx-auto space-y-4">
                 
-                <!-- PROMO BANNER -->
                 <div class="bg-red-900/40 border border-red-700/80 p-3 rounded-xl text-center font-extrabold text-red-300 uppercase tracking-widest text-sm mb-6">
                     🚨 LIMITED TIME OFFER: DEEP DISCOUNTS APPLIED BELOW 🚨
                 </div>
 
-                <!-- CAR PACKAGE PROGRESS BAR (UPDATED PRICES) -->
                 <div class="flex justify-between items-center mb-10 text-xs sm:text-sm font-bold text-gray-500">
                     <div class="text-primary-blue text-center w-1/4">BASIC<br>**$119**</div>
                     <div class="text-primary-blue text-center w-1/4">ADVANCED<br>**$169**</div>
@@ -283,7 +260,6 @@
                     <div class="text-primary-blue text-center w-1/4">ULTIMATE<br>**$499+**</div>
                 </div>
 
-                <!-- Package 1: The Basic Spa (RETAINS $20 SURCHARGE for SUV/Pickup) -->
                 <details class="group bg-dark-card p-6 rounded-xl border border-gray-800 open:border-primary-blue/50 open:shadow-xl open:shadow-primary-blue/10 transition duration-300">
                     <summary class="flex justify-between items-center cursor-pointer text-2xl font-bold text-primary-blue">
                         Car/SUV/Pickup: The Basic Spa
@@ -292,11 +268,9 @@
                             <span>**$119**</span> 
                             <span class="text-gray-400 font-normal text-base">(+$20 SUV/Pickup)</span>
                         </span>
-                        <!-- SVG icon added descriptive title/aria-label -->
                         <svg class="w-6 h-6 transform transition duration-300 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-label="Expand Basic Package Details"><title>Expand Basic Package Details</title><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </summary>
                     <div class="mt-4 pt-4 border-t border-gray-800">
-                        <!-- Increased contrast on this text -->
                         <p class="text-gray-300 mb-4 italic">The perfect choice for regular maintenance and keeping your Car/Sedan looking fresh. **Est. Time: 1.5 - 2 Hours**</p>
                         <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 text-gray-300">
                             <li class="flex items-start"><span class="text-primary-blue mr-2">✓</span> Exterior Hand Wash & Microfiber Dry</li>
@@ -310,19 +284,16 @@
                     </div>
                 </details>
 
-                <!-- Package 2: The Advanced Detail (SURCHARGE REMOVED) -->
                 <details class="group bg-dark-card p-6 rounded-xl border border-gray-800 open:border-primary-blue/50 open:shadow-xl open:shadow-primary-blue/10 transition duration-300">
                     <summary class="flex justify-between items-center cursor-pointer text-2xl font-bold text-primary-blue">
                         Car/SUV/Pickup: The Advanced Detail
                         <span class="text-lg font-extrabold text-white flex items-baseline space-x-2">
                              <span class="text-red-500 line-through text-lg font-normal">$179</span>
                             <span>**$169**</span>
-                            <span class="text-gray-400 font-normal text-base">(All-Inclusive)</span> <!-- Surcharge removed -->
-                        </span>
+                            <span class="text-gray-400 font-normal text-base">(All-Inclusive)</span> </span>
                         <svg class="w-6 h-6 transform transition duration-300 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-label="Expand Advanced Package Details"><title>Expand Advanced Package Details</title><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </summary>
                     <div class="mt-4 pt-4 border-t border-gray-800">
-                        <!-- Increased contrast on this text -->
                         <p class="text-gray-300 mb-4 italic">Includes all Basic features PLUS deeper cleaning, paint decontamination, and essential protection. **Est. Time: 2 - 3 Hours**</p>
                         <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 text-gray-300 font-semibold">
                             <li class="flex items-start"><span class="text-primary-blue mr-2">✓</span> **ALL Basic Spa Features**</li>
@@ -335,7 +306,6 @@
                     </div>
                 </details>
 
-                <!-- Package 3: The Extreme Cleaning (Best Value) -->
                 <details open class="group bg-dark-card p-6 rounded-xl border-4 border-primary-blue open:shadow-2xl open:shadow-primary-blue/50 transition duration-300">
                     <span class="text-sm font-extrabold text-center text-dark-bg bg-primary-blue rounded-full py-1 px-4 absolute -top-4 left-1/2 transform -translate-x-1/2 shadow-lg hidden md:block">BEST VALUE: $20 OFF!</span>
                     <summary class="flex justify-between items-center cursor-pointer text-2xl font-extrabold text-primary-blue">
@@ -348,7 +318,6 @@
                         <svg class="w-6 h-6 transform transition duration-300 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-label="Expand Extreme Package Details"><title>Expand Extreme Package Details</title><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </summary>
                     <div class="mt-4 pt-4 border-t border-gray-800">
-                        <!-- Increased contrast on this text -->
                         <p class="text-gray-300 mb-4 italic">The ultimate restoration package for the interior. Perfect for removing stains, pet hair, and deeply embedded odors. **Est. Time: 3 - 4.5 Hours**</p>
                         <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 text-gray-300 font-extrabold">
                             <li class="flex items-start"><span class="text-primary-blue mr-2">✓</span> **ALL Advanced Detail Features**</li>
@@ -362,7 +331,6 @@
                     </div>
                 </details>
 
-                <!-- Package 4: Ultimate 604 Detail (NO PRICE CHANGE) -->
                 <details class="group bg-dark-card p-6 rounded-xl border border-gray-800 open:border-primary-blue/50 open:shadow-xl open:shadow-primary-blue/10 transition duration-300">
                     <summary class="flex justify-between items-center cursor-pointer text-2xl font-bold text-primary-blue">
                         Car/SUV/Pickup: Ultimate 604 Detail
@@ -373,7 +341,6 @@
                         <svg class="w-6 h-6 transform transition duration-300 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-label="Expand Ultimate Package Details"><title>Expand Ultimate Package Details</title><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </summary>
                     <div class="mt-4 pt-4 border-t border-gray-800">
-                        <!-- Increased contrast on this text -->
                         <p class="text-gray-300 mb-4 italic">Our premium, full-day service including paint correction and long-term graphene protection. **Est. Time: 5+ Hours**</p>
                         <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 text-gray-300 font-semibold">
                             <li class="flex items-start"><span class="text-primary-blue mr-2">✓</span> **ALL Extreme Cleaning Features**</li>
@@ -386,7 +353,6 @@
                     </div>
                 </details>
                 
-                <!-- RV DETAILING -->
                 <details class="group bg-dark-card p-6 rounded-xl border-4 border-gray-700 open:border-red-500/50 open:shadow-xl open:shadow-red-500/10 transition duration-300">
                     <span class="text-sm font-extrabold text-center text-dark-bg bg-red-500 rounded-full py-1 px-4 absolute -top-4 left-1/2 transform -translate-x-1/2 shadow-lg hidden md:block">CUSTOM QUOTE</span>
                     <summary class="flex justify-between items-center cursor-pointer text-2xl font-extrabold text-red-500">
@@ -395,7 +361,6 @@
                         <svg class="w-6 h-6 transform transition duration-300 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-label="Expand RV Detailing Details"><title>Expand RV Detailing Details</title><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </summary>
                     <div class="mt-4 pt-4 border-t border-gray-800">
-                        <!-- Increased contrast on this text -->
                         <p class="text-gray-300 mb-4 italic">Essential cleaning packages for your home on wheels. **Final price requires a custom quote based on size and condition.**</p>
                         <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 text-gray-300 font-semibold">
                             <li class="flex items-start"><span class="text-red-500 mr-2">★</span> **Exterior Wash & Rinse (Roof Included)**</li>
@@ -407,7 +372,6 @@
                     </div>
                 </details>
 
-                <!-- BOAT / MARINE DETAILING -->
                 <details class="group bg-dark-card p-6 rounded-xl border-4 border-gray-700 open:border-green-500/50 open:shadow-xl open:shadow-green-500/10 transition duration-300">
                     <span class="text-sm font-extrabold text-center text-dark-bg bg-green-500 rounded-full py-1 px-4 absolute -top-4 left-1/2 transform -translate-x-1/2 shadow-lg hidden md:block">CUSTOM QUOTE</span>
                     <summary class="flex justify-between items-center cursor-pointer text-2xl font-extrabold text-green-500">
@@ -416,7 +380,6 @@
                         <svg class="w-6 h-6 transform transition duration-300 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-label="Expand Marine Detailing Details"><title>Expand Marine Detailing Details</title><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </summary>
                     <div class="mt-4 pt-4 border-t border-gray-800">
-                        <!-- Increased contrast on this text -->
                         <p class="text-gray-300 mb-4 italic">Specialized cleaning and restoration for your boat's exterior and interior surfaces. **Quote based on boat length and services needed.**</p>
                         <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 text-gray-300 font-semibold">
                             <li class="flex items-start"><span class="text-green-500 mr-2">⚓</span> **Exterior Gel Coat Wash & Decontamination**</li>
@@ -428,47 +391,39 @@
                     </div>
                 </details>
             </div>
-            <!-- Increased contrast on this text -->
             <p class="text-center text-gray-400 mt-12 text-sm italic">Note: Prices listed are for standard size **Cars/Sedans**. SUVs and Pickup Trucks incur a flat **$20 surcharge** only for the **Basic ($119)** package. The Advanced, Extreme, and Ultimate packages are all-inclusive for Cars, SUVs, and Pickups. RV/Marine prices require custom quotation.</p>
         </section>
 
-        <!-- 3. ADD-ONS SECTION (UPDATED $X9 PRICING) -->
         <section id="addons" class="py-20 sm:py-28 container mx-auto px-6">
             <h2 class="text-4xl font-extrabold text-center mb-4 text-white">Customize Your Spa Day</h2>
-            <!-- Increased contrast on this text -->
             <p class="text-lg text-center text-gray-300 mb-16 max-w-3xl mx-auto">Enhance any package with these targeted A La Carte services. **Prices for a limited time end in .9!**</p>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 max-w-6xl mx-auto">
                 
-                <!-- Add-On 1: Engine Bay Detail -->
                 <div class="bg-dark-card p-5 rounded-xl border border-gray-800 text-center hover:border-primary-blue/50 hover:shadow-lg transition duration-300">
                     <h4 class="text-xl font-bold text-primary-blue">Engine Bay Detail</h4>
                     <p class="text-3xl font-extrabold my-2 text-white">$29</p>
                     <p class="text-gray-400 text-sm">Safe degreasing and dressing for a like-new engine appearance.</p>
                 </div>
 
-                <!-- Add-On 2: Pet Hair Removal -->
                 <div class="bg-dark-card p-5 rounded-xl border border-gray-800 text-center hover:border-primary-blue/50 hover:shadow-lg transition duration-300">
                     <h4 class="text-xl font-bold text-primary-blue">Pet Hair Removal</h4>
                     <p class="text-3xl font-extrabold my-2 text-white">From $19</p>
                     <p class="text-gray-400 text-sm">Specialized tools to remove stubborn pet hair from carpets and upholstery.</p>
                 </div>
 
-                <!-- Add-On 3: Headlight Restoration -->
                 <div class="bg-dark-card p-5 rounded-xl border border-gray-800 text-center hover:border-primary-blue/50 hover:shadow-lg transition duration-300">
                     <h4 class="text-xl font-bold text-primary-blue">Headlight Restoration</h4>
                     <p class="text-3xl font-extrabold my-2 text-white">$49 / Pair</p>
                     <p class="text-gray-400 text-sm">Removes fogging and oxidation, improving visibility and safety.</p>
                 </div>
 
-                <!-- Add-On 4: Ozone Odor Treatment -->
                 <div class="bg-dark-card p-5 rounded-xl border border-gray-800 text-center hover:border-primary-blue/50 hover:shadow-lg transition duration-300">
                     <h4 class="text-xl font-bold text-primary-blue">Ozone Treatment</h4>
                     <p class="text-3xl font-extrabold my-2 text-white">$59</p>
                     <p class="text-gray-400 text-sm">Eliminates deep, embedded odors like smoke, mold, or strong spills.</p>
                 </div>
 
-                <!-- Add-On 5: Premium Window Sealant -->
                 <div class="bg-dark-card p-5 rounded-xl border border-gray-800 text-center hover:border-primary-blue/50 hover:shadow-lg transition duration-300">
                     <h4 class="text-xl font-bold text-primary-blue">Window Sealant</h4>
                     <p class="text-3xl font-extrabold my-2 text-white">$24</p>
@@ -478,55 +433,44 @@
             </div>
         </section>
         
-        <!-- 4. GALLERY SECTION: Staggered Masonry Grid (WITH IMAGES) -->
         <section id="gallery" class="py-20 sm:py-28 container mx-auto px-6 bg-highlight-bg border-y border-primary-blue/10">
             <h2 class="text-4xl font-extrabold text-center mb-4 text-white">Results You Can Trust</h2>
-            <!-- Increased contrast on this text -->
             <p class="text-lg text-center text-gray-300 mb-16 max-w-2xl mx-auto">A glimpse into the mirror-like finishes and immaculate interiors achieved by 604 Car Spa. Your photos are here!</p>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 
-                <!-- Column 1 -->
                 <div class="space-y-6">
-                    <!-- 1. Deep Gloss Exterior (Long Image: C300 Front Angle) -->
-                    <img src="https://placehold.co/800x1200/000000/ffffff?text=C300+Front+View" 
+                    <img src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/cb9e83c4-d243-4ebe-80e7-37cc37432ae0.jpeg" 
                          alt="Glossy black Mercedes C300 after exterior detailing, showing reflection."
                          class="gallery-img h-96 object-cover" 
                          loading="lazy" />
 
-                    <!-- 2. Wheel/Paint Close-up (Short Image: Corvette Wheel) -->
-                    <img src="https://placehold.co/800x600/FF5733/ffffff?text=Corvette+Wheel+Close-up" 
-                         alt="Close-up of a restored Corvette wheel and tire."
+                    <img src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/b7799077-b0d1-4a06-9cf9-604344e295cc.jpeg" 
+                         alt="Close-up of a restored black luxury wheel and tire."
                          class="gallery-img h-48 object-cover" 
                          loading="lazy" />
                 </div>
                 
-                <!-- Column 2 -->
                 <div class="space-y-6 lg:mt-12">
-                    <!-- 3. Full Vehicle Shot (Short Image: C300 Rear Angle) -->
-                    <img src="https://placehold.co/800x600/000000/ffffff?text=C300+Rear+View" 
-                         alt="Rear view of the Mercedes C300, showing clear paint and taillights."
+                    <img src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/bf0f8d8b-0fdf-4e09-8175-366982395feb.jpeg" 
+                         alt="Rear view of a clean red SUV, showing clear paint and taillights."
                          class="gallery-img h-48 object-cover" 
                          loading="lazy" />
 
-                    <!-- 4. Interior Restoration (Long Image: C300 Dashboard/Steering Wheel) -->
-                    <img src="https://placehold.co/800x1200/111111/ffffff?text=C300+Interior+Dash" 
-                         alt="Immaculately detailed Mercedes C300 dashboard and steering wheel."
+                    <img src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/96ed5618-449f-480f-9888-35a895504783.jpeg" 
+                         alt="Immaculately detailed vehicle dashboard and steering wheel."
                          class="gallery-img h-96 object-cover" 
                          loading="lazy" />
                 </div>
                 
-                <!-- Column 3 -->
                 <div class="space-y-6">
-                    <!-- 5. Leather Conditioning (Short Image: C300 Seats/Console) -->
-                    <img src="https://placehold.co/800x600/111111/ffffff?text=C300+Seats+and+Console" 
-                         alt="Detailed leather seats and center console of the Mercedes C300."
+                    <img src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/a9950232-6ac2-47e9-90c0-41d8a2f1d90a.jpeg" 
+                         alt="Detailed leather seats and center console of a vehicle."
                          class="gallery-img h-48 object-cover" 
                          loading="lazy" />
 
-                    <!-- 6. Classic Car Full Shot (Long Image: Orange Corvette) -->
-                    <img src="https://placehold.co/800x1200/FF5733/ffffff?text=Orange+Corvette+Exterior" 
-                         alt="Full exterior view of a polished orange classic Corvette."
+                    <img src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/e84a1ad4-3933-4398-b5c2-cfb8a0dffeb7.jpeg" 
+                         alt="Full exterior view of a polished silver SUV after detailing."
                          class="gallery-img h-96 object-cover" 
                          loading="lazy" />
                 </div>
@@ -534,14 +478,12 @@
             </div>
         </section>
 
-        <!-- 5. FAQ SECTION (UPDATED) -->
         <section id="faq" class="py-20 sm:py-28 container mx-auto px-6">
             <h2 class="text-4xl font-extrabold text-center mb-4 text-white">Frequently Asked Questions</h2>
             <p class="text-lg text-center text-gray-300 mb-16 max-w-3xl mx-auto">Quick answers to the most common questions about our mobile service.</p>
 
             <div class="max-w-4xl mx-auto space-y-4">
                 
-                <!-- FAQ 1 (UPDATED UTILITIES) -->
                 <details class="group bg-dark-card p-6 rounded-xl border border-gray-800 open:border-primary-blue/50 open:shadow-xl open:shadow-primary-blue/10 transition duration-300">
                     <summary class="flex justify-between items-center cursor-pointer text-lg font-bold text-white">
                         Do I need to provide water and electricity?
@@ -552,7 +494,6 @@
                     </div>
                 </details>
 
-                <!-- FAQ 2 -->
                 <details class="group bg-dark-card p-6 rounded-xl border border-gray-800 open:border-primary-blue/50 open:shadow-xl open:shadow-primary-blue/10 transition duration-300">
                     <summary class="flex justify-between items-center cursor-pointer text-lg font-bold text-white">
                         What areas in Metro Vancouver do you cover?
@@ -563,7 +504,6 @@
                     </div>
                 </details>
 
-                <!-- FAQ 3 -->
                 <details class="group bg-dark-card p-6 rounded-xl border border-gray-800 open:border-primary-blue/50 open:shadow-xl open:shadow-primary-blue/10 transition duration-300">
                     <summary class="flex justify-between items-center cursor-pointer text-lg font-bold text-white">
                         Do I need to be present during the detailing service?
@@ -574,7 +514,6 @@
                     </div>
                 </details>
 
-                <!-- FAQ 4 -->
                 <details class="group bg-dark-card p-6 rounded-xl border border-gray-800 open:border-primary-blue/50 open:shadow-xl open:shadow-primary-blue/10 transition duration-300">
                     <summary class="flex justify-between items-center cursor-pointer text-lg font-bold text-white">
                         What if my car is extremely dirty (e.g., pet hair, mud)?
@@ -587,100 +526,78 @@
             </div>
         </section>
 
-        <!-- 6. BOOKING / CONTACT SECTION -->
         <section id="booking" class="py-20 sm:py-28 bg-dark-bg border-t border-primary-blue/10">
             <div class="container mx-auto px-6 max-w-6xl">
                 <h2 class="text-4xl font-extrabold text-center mb-4 text-white">Schedule Your Spa Treatment</h2>
-                <!-- Increased contrast on this text -->
                 <p class="text-lg text-center text-gray-300 mb-16 max-w-2xl mx-auto">Book the **Extreme Cleaning** today for the best value and restoration results.</p>
                 
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
                     
-                    <!-- Contact Information -->
                     <div class="space-y-8 p-6 bg-dark-card rounded-xl shadow-2xl shadow-black/50 border border-gray-800 h-fit">
                         <h3 class="text-2xl font-extrabold text-primary-blue">Contact Us Directly</h3>
                         
                         <div class="flex items-start space-x-3">
-                            <!-- SVG icon added aria-hidden -->
                             <svg class="w-6 h-6 text-primary-blue flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                             <div>
-                                <!-- Increased contrast on this text -->
                                 <p class="text-gray-400">Email Address</p>
                                 <a href="mailto:604carspa@gmail.com" class="text-white font-medium hover:text-primary-blue transition">604carspa@gmail.com</a>
                             </div>
                         </div>
                         
                         <div class="flex items-start space-x-3">
-                            <!-- SVG icon added aria-hidden -->
                             <svg class="w-6 h-6 text-primary-blue flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.006 11.006 0 008.281 8.281l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-2C7.373 21 3 16.627 3 11V5z"></path></svg>
                             <div>
-                                <!-- Increased contrast on this text -->
                                 <p class="text-gray-400">Call/Text</p>
                                 <a href="tel:+16723386915" class="text-white font-medium hover:text-primary-blue transition">(672) 338-6915</a>
                             </div>
                         </div>
                         
-                        <!-- WhatsApp Button - SVG icon added aria-hidden -->
                         <a href="https://wa.me/16723386915?text=Hi%20604%20Car%20Spa,%20I'd%20like%20to%20book%20a%20detail." target="_blank" rel="noopener noreferrer" class="flex items-center justify-center space-x-3 whatsapp-btn text-dark-bg font-extrabold py-3 rounded-lg shadow-md shadow-black/50 transition duration-300 hover:scale-[1.01]">
                             <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.031 2.015A9.992 9.992 0 002.04 12.016c0 1.715.46 3.39 1.326 4.86l-1.42 5.185 5.308-1.4c1.427.78 3.036 1.206 4.737 1.206h.008a9.992 9.992 0 009.992-9.992 9.992 9.992 0 00-9.992-9.993zM16.48 15.088c-.187.31-.564.444-.94.187-.375-.25-.638-.6-.94-.875-.27-.27-.584-.52-.94-.656-.355-.137-.71-.193-1.085-.193-.375 0-.75.056-1.125.193-.375.136-.67.4-.94.656-.27.27-.533.625-.75 1.03-.217.406-.404.812-.59 1.187-.187.375-.404.59-.656.59-.25 0-.5-.078-.75-.312-.25-.235-.94-.875-1.875-1.75-.937-.875-1.5-1.75-1.687-2.062-.187-.31-.03-.484.14-.656.173-.173.4-.404.59-.59.187-.187.25-.31.375-.564.125-.25.062-.5-.094-.812-.156-.312-.375-.75-.564-1.125-.187-.375-.375-.656-.59-.875-.217-.22-.31-.484-.31-.75 0-.25.03-.484.094-.75.062-.27.187-.53.31-.812.125-.28.28-.564.44-.812.156-.25.31-.47.53-.59.217-.125.47-.187.75-.187.28 0 .53.03.75.062.217.03.44.125.687.312.247.187.404.404.564.656.16.25.28.53.375.812.094.28.125.564.094.875-.03.31-.125.656-.187 1.03-.06.375-.125.75-.187 1.062z"/></svg>
                             <span class="text-white">Message Us on WhatsApp</span>
                         </a>
 
                         <div class="flex items-start space-x-3">
-                            <!-- SVG icon added aria-hidden -->
                             <svg class="w-6 h-6 text-primary-blue flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
                             <div>
-                                <!-- Increased contrast on this text -->
                                 <p class="text-gray-400">Service Location</p>
                                 <p class="text-white font-medium">Serving the Metro Vancouver/604 Area (Mobile Service)</p>
                             </div>
                         </div>
                         
-                        <!-- Instagram Link - SVG icon added aria-hidden -->
                         <a href="https://www.instagram.com/604.carspa" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-3 text-gray-400 hover:text-primary-blue transition duration-200">
                             <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.71.01 3.655.056 1.026.046 1.79.202 2.428.465.667.272 1.25.666 1.764 1.18.514.514.902 1.097 1.18 1.764.262.637.418 1.4.465 2.428.046.945.056 1.225.056 3.655s-.01 2.71-.056 3.655c-.046 1.026-.202 1.79-.465 2.428-.272.667-.666 1.25-1.18 1.764-.514.514-1.097.902-1.764 1.18-.637.262-1.4.418-2.428.465-.945.046-1.225.056-3.655.056s-2.71-.01-3.655-.056c-1.026-.046-1.79-.202-2.428-.465-.667-.272-1.25-.666-1.764-1.18-.514-.514-1.097-.902-1.18-1.764-.262-.637-.418-1.4-.465-2.428-.046-.945-.056-1.225-.056-3.655s.01-2.71.056-3.655c.046-1.026.202-1.79.465-2.428.272-.667.666-1.25 1.18-1.764.514-.514 1.097-.902 1.764-1.18.637-.262 1.4-.418 2.428-.465C9.505 2.01 9.785 2 12.215 2zm0 1.625c-2.348 0-2.527.01-3.4.053-1.01.048-1.71.196-2.18.384-.52.203-.94.47-1.35.88-.41.41-.677.83-.88 1.35-.188.47-.336 1.17-.384 2.18-.043.873-.053 1.052-.053 3.4s.01 2.527.053 3.4c.048 1.01.196 1.71.384 2.18.203.52.47.94.88 1.35.41.41.83.677 1.35.88.47.188 1.17.336 2.18.384.873.043 1.052.053 3.4.053s2.527-.01 3.4-.053c1.01-.048 1.71-.196 2.18-.384.203-.52.47-.94.88-1.35.41-.41.83-.677 1.35-.88.47-.188 1.17-.336 2.18-.384-.873-.043-1.052-.053-3.4-.053zm0 3.656a4.73 4.73 0 110 9.46 4.73 4.73 0 010-9.46zm0 1.625a3.105 3.105 0 100 6.21 3.105 3.105 0 000-6.21zm6.54-3.518a.92.92 0 11-1.84 0 .92.92 0 011.84 0z" clip-rule="evenodd" /></svg>
                             <span>Follow @604.carspa on Instagram</span>
                         </a>
                     </div>
 
-                    <!-- Contact Form (Netlify Form) -->
                     <div class="p-8 bg-dark-card rounded-xl shadow-2xl shadow-black/50 border border-gray-800">
                         <form name="booking" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="space-y-6">
-                            <!-- Hidden Netlify Fields -->
                             <input type="hidden" name="form-name" value="booking" />
                             <div hidden>
                                 <label>Don’t fill this out: <input name="bot-field" /></label>
                             </div>
 
-                            <!-- Personal Info -->
                             <div>
-                                <!-- Increased contrast on this label -->
                                 <label for="name" class="block text-sm font-medium text-gray-200 mb-1">Your Name</label>
                                 <input type="text" id="name" name="name" required class="w-full px-4 py-3 bg-dark-bg border border-gray-700 rounded-lg text-white focus:ring-primary-blue focus:border-primary-blue transition" autocomplete="name">
                             </div>
                             <div>
-                                <!-- Increased contrast on this label -->
                                 <label for="email" class="block text-sm font-medium text-gray-200 mb-1">Email Address</label>
                                 <input type="email" id="email" name="email" required class="w-full px-4 py-3 bg-dark-bg border border-gray-700 rounded-lg text-white focus:ring-primary-blue focus:border-primary-blue transition" autocomplete="email">
                             </div>
-                            <!-- Phone Number -->
                             <div>
-                                <!-- Increased contrast on this label -->
                                 <label for="phone" class="block text-sm font-medium text-gray-200 mb-1">Phone Number</label>
                                 <input type="tel" id="phone" name="phone" required class="w-full px-4 py-3 bg-dark-bg border border-gray-700 rounded-lg text-white focus:ring-primary-blue focus:border-primary-blue transition" placeholder="(604) 555-1234" autocomplete="tel">
                             </div>
                             
-                            <!-- New Service Address Field with Autocomplete -->
                             <div>
-                                <!-- Increased contrast on this label -->
                                 <label for="address" class="block text-sm font-medium text-gray-200 mb-1">Service Address</label>
                                 <input type="text" id="address" name="address" required class="w-full px-4 py-3 bg-dark-bg border border-gray-700 rounded-lg text-white focus:ring-primary-blue focus:border-primary-blue transition" placeholder="e.g., 1234 Main St, Surrey" autocomplete="street-address">
                                 <p class="text-xs text-gray-500 mt-1 italic">We come to you! Please provide the full address where the service will take place.</p>
                             </div>
 
-                            <!-- Package Selection (UPDATED: Combined Auto Packages) -->
                             <div>
-                                <!-- Increased contrast on this label -->
                                 <label for="service" class="block text-sm font-medium text-gray-200 mb-1">Package of Interest (Limited Time Pricing)</label>
                                 <select id="service" name="service" onchange="toggleAddons()" class="w-full px-4 py-3 bg-dark-bg border border-gray-700 rounded-lg text-white focus:ring-primary-blue focus:border-primary-blue appearance-none cursor-pointer transition">
                                     <optgroup label="Auto Detailing Packages">
@@ -698,7 +615,6 @@
                                 </select>
                             </div>
                             
-                            <!-- UTILITIES CONFIRMATION (NEW REQUIRED FIELD) -->
                             <div class="pt-4 border-t border-gray-800">
                                 <p class="block text-sm font-medium text-gray-200 mb-3 font-semibold">Utilities Requirement <span class="text-red-500">*</span></p>
                                 <p class="text-xs text-gray-400 mb-3">We require access to an **outdoor water spigot** and **power outlet**.</p>
@@ -714,9 +630,7 @@
                                 </div>
                             </div>
                             
-                            <!-- Add-Ons Checkboxes (ALWAYS ENABLED) -->
                             <div class="pt-4 border-t border-gray-800 transition duration-300 hover:border-primary-blue/50 hover:shadow-inner hover:shadow-primary-blue/5" id="addon-container">
-                                <!-- Increased contrast on this text -->
                                 <p class="block text-sm font-medium text-gray-200 mb-3 font-semibold">Optional Add-Ons (Limited Time $X9 Pricing):</p>
                                 <div class="grid grid-cols-2 gap-y-3" id="addon-group">
                                     <label class="flex items-center space-x-3">
@@ -740,17 +654,13 @@
                                         <span class="text-sm text-gray-300 font-medium">Window Sealant (<span class="text-primary-blue">$24</span>)</span>
                                     </label>
                                 </div>
-                                <!-- Message only for Quote-based services now -->
                                 <p id="addon-message" class="text-sm font-semibold mt-3 text-primary-blue hidden">
                                     NOTE: Add-Ons are negotiable and quoted separately for **RV/Marine/Custom** packages.
                                 </p>
-                                <!-- Increased contrast on this text -->
                                 <p class="text-xs text-gray-600 mt-3">Final price confirmed upon booking consultation.</p>
                             </div>
 
-                            <!-- Payment Method Selection (Credit Card Option Removed) -->
                             <div class="pt-4 border-t border-gray-800">
-                                <!-- Increased contrast on this label -->
                                 <p class="block text-sm font-medium text-gray-200 mb-3 font-semibold">Preferred Payment Method (After Service):</p>
                                 <div class="space-y-3">
                                     <label class="flex items-center space-x-3">
@@ -761,31 +671,24 @@
                                         <input type="radio" name="payment_method" value="Cash (After Service)" class="h-5 w-5 bg-dark-bg border-gray-700 rounded-full transition duration-150">
                                         <span class="text-sm text-gray-300 font-medium">Cash (After service)</span>
                                     </label>
-                                    <!-- **REMOVED CREDIT CARD OPTION as requested** -->
-                                </div>
+                                    </div>
                             </div>
                             
-                            <!-- Vehicle Details & Date -->
                             <div>
-                                <!-- Increased contrast on this label -->
                                 <label for="message" class="block text-sm font-medium text-gray-200 mb-1">Vehicle Details & Preferred Date/Location Notes</label>
                                 <textarea id="message" name="message" rows="4" required class="w-full px-4 py-3 bg-dark-bg border border-gray-700 rounded-lg text-white focus:ring-primary-blue focus:border-primary-blue transition" placeholder="e.g., 2020 Tesla Model 3, White, Available next Tuesday PM or Wednesday AM. Please note any parking restrictions or specific gate codes."></textarea>
                             </div>
                             
-                            <!-- T&C Acknowledgment Checkbox (NEW) -->
                             <div class="pt-4">
                                 <label class="flex items-center space-x-3">
                                     <input type="checkbox" id="agree_terms" name="agree_terms" required class="h-5 w-5 bg-dark-bg border-gray-700 rounded transition duration-150">
-                                    <!-- Increased contrast on this text -->
                                     <span class="text-sm text-gray-300 font-medium terms-link-container">I acknowledge and agree to the <a href="#" onclick="showModal(); return false;" class="text-primary-blue hover:underline">Service Agreement terms</a>.</span>
                                 </label>
                             </div>
 
-                            <!-- Netlify Success Redirection is disabled in JS, using the simple internal message instead -->
                             <button type="submit" class="w-full bg-primary-blue text-dark-bg font-extrabold py-3 rounded-lg hover:bg-blue-500 transition duration-300 transform hover:scale-[1.01] shadow-md shadow-primary-blue/30 shimmer-button">
                                 SUBMIT BOOKING REQUEST
                             </button>
-                            <!-- This will be the SUCCESS message on submit -->
                             <p id="form-message" class="text-center text-sm text-primary-blue font-semibold hidden mt-4">Thank job! Your request has been received. We'll be in touch within 2 hours.</p>
                         </form>
                     </div>
@@ -794,11 +697,9 @@
         </section>
     </main>
 
-    <!-- Footer -->
     <footer class="bg-black border-t-4 border-primary-blue/50 py-10">
         <div class="container mx-auto px-6 text-center">
-             <!-- LOGO: 604 Car Spa + small Vehicle Spa subtitle - SVG icon added aria-hidden -->
-            <a href="#home" class="flex flex-col items-center leading-none -space-y-1 justify-center mb-4">
+             <a href="#home" class="flex flex-col items-center leading-none -space-y-1 justify-center mb-4">
                 <div class="flex items-center justify-center">
                     <svg class="w-8 h-8 text-primary-blue mr-2" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 21s-8-8-8-12c0-4.418 3.582-8 8-8s8 3.582 8 8c0 4-8 12-8 12z" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 11c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z" fill="#1E90FF"/></svg>
                     <span class="text-4xl font-extrabold tracking-tighter text-white">604</span><span class="text-4xl font-extrabold tracking-tighter text-primary-blue font-light">carspa</span>
@@ -808,12 +709,10 @@
             <p class="text-gray-500 text-sm mb-2">Expert Auto, RV, and Marine Detailing for Vancouver and the Lower Mainland.</p>
             <p class="text-gray-500 text-sm mb-6"><a href="#" onclick="showModal(); return false;" class="text-primary-blue hover:underline">Service Agreement & Terms</a></p>
 
-            <!-- Dynamic Year -->
             <p class="text-xs text-gray-700">&copy; <span id="current-year">2024</span> 604 Car Spa. All rights reserved. | <span class="text-primary-blue">Designed for Professional Results</span></p>
         </div>
     </footer>
 
-    <!-- SERVICE AGREEMENT MODAL -->
     <div id="serviceModal" class="modal">
         <div class="modal-content p-8 rounded-xl shadow-2xl shadow-primary-blue/30 max-w-2xl">
             <div class="flex justify-between items-start border-b border-gray-700 pb-4 mb-4">
@@ -828,14 +727,12 @@
                 <ul class="list-disc list-inside space-y-1 pl-4">
                     <li>**Promotional Pricing:** Prices for the Basic, Advanced, and Extreme packages reflect a **limited-time promotional discount** applied to the base rate.</li>
                     <li>**Final Price:** The price quoted is an estimate. The final price is determined upon **physical inspection** of the vehicle prior to work commencing, based on actual size, condition, and chosen add-ons (e.g., heavy pet hair, excessive mud, or biohazard). **Note: Prices are based on standard Car/Sedan size. SUVs/Pickup Trucks incur a $20 size surcharge for the Basic ($119) package only. The Advanced ($169) and Extreme ($199) packages are all-inclusive for these vehicle types.** RV and Marine services are quote-only.</li>
-                    <!-- **Payment term updated to remove 'Card'** -->
                     <li>**Payment:** Payment is due upon **completion of the service** via Cash or E-transfer.</li>
                     <li>**Rescheduling & Cancellations:** Rescheduling is **free** if notification is provided at least **2 hours** before the scheduled appointment. If the client cancels with less than 24 hours notice, a cancellation fee of $50 may be applied.</li>
                 </ul>
 
                 <h4 class="text-xl font-bold text-white pt-2">2. Service Requirements (Mobile Detailing)</h4>
                 <ul class="list-disc list-inside space-y-1 pl-4">
-                    <!-- UPDATED UTILITIES TERM -->
                     <li>**Utilities:** The client is **REQUIRED** to provide access to an outdoor **water spigot** and a standard **power outlet (120V)** within 50 feet of the service location to maintain our service efficiency and pricing. If the client is unable to provide either utility, they must note this during booking so 604 Car Spa can prepare accordingly.</li>
                     <li>**Access:** Client must ensure **safe and legal access** to the vehicle at the specified location. This includes being able to open all doors, the hood, and the trunk/cabin.</li>
                     <li>**Parking:** Client is responsible for providing **adequate parking space** for the service vehicle. For RVs/Boats, this includes sufficient working space.</li>
@@ -853,8 +750,6 @@
             </div>
         </div>
     </div>
-    <!-- END MODAL -->
-
     <script>
         // Set the current year dynamically
         document.getElementById('current-year').textContent = new Date().getFullYear();
@@ -919,4 +814,3 @@
     </script>
 </body>
 </html>
-
