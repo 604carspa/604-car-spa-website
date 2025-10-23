@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-CA">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,12 +7,24 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     
-    <meta name="description" content="Mobile car detailing in Metro Vancouver (604). Premium spa packages for cars, SUVs, pickups, RVs, and boats, delivered right to your door.">
-    <meta property="og:title" content="604 Car Spa - Mobile Auto Detailing">
+    <!-- PRECONNECTS & DNS PREFETCH (Performance) -->
+    <link rel="preconnect" href="https://cdn.604carspa.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.604carspa.com">
+    <link rel="preconnect" href="https://plausible.io">
+    <link rel="dns-prefetch" href="https://plausible.io">
+    <!-- Font Preload (Performance) -->
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+      href="https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMa9mSosF0.woff2">
+    
+    <!-- SEO & Canonical URL FIXES -->
+    <link rel="canonical" href="https://www.604carspa.com/">
+
+    <meta property="og:title" content="604 Car Spa — Mobile Auto Detailing in Metro Vancouver">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://yourdomain.com/">
-    <meta property="og:description" content="Premium detailing services in Vancouver. Basic washes to full ceramic coating.">
-    <meta property="og:site_name" content="604 Car Spa">
+    <meta property="og:url" content="https://www.604carspa.com/">
+    <meta property="og:description" content="Premium mobile detailing for cars, SUVs, pickups, RVs & boats. We come to you across Metro Vancouver.">
+    <meta property="og:image" content="https://www.604carspa.com/og-cover.jpg">
+    <meta name="description" content="Mobile car detailing across Metro Vancouver. Basic to full paint correction & graphene protection. Book 604 Car Spa today.">
     
     <title>604 Car Spa - Premium Mobile Auto Detailing</title>
     
@@ -44,12 +56,13 @@
             color: white;
             background-color: #050505;
         }
-
-        /* --- Custom Hero/Before & After Split (Image URLs REMOVED) --- */
-        .split-hero-bg {
-            background-image: none;
-            background-color: #050505;
+        /* A11Y: Visible Focus Ring for Keyboard Users */
+        :focus-visible {
+            outline: 2px solid #1E90FF;
+            outline-offset: 2px;
         }
+
+        /* --- Custom Hero/Before & After Split --- */
         .before-after-split {
             /* This is the unique, professional split design */
             min-height: 85vh;
@@ -61,16 +74,29 @@
                 grid-template-columns: 1fr 1fr;
             }
         }
-        /* Using solid dark backgrounds for placeholders */
-        .before-side {
-            background: #111111; /* Fallback for transparency/contrast */
-            background-size: cover;
-            background-position: center;
+        /* Style for the stacked images in the carousel */
+        .carousel-image {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            filter: brightness(0.9); /* Prevent images from looking too crushed black */
         }
-        .after-side {
-            background: #1E90FF20; /* Fallback for transparency/contrast */
-            background-size: cover;
-            background-position: center;
+        .carousel-image.active {
+            /* INCREASED OPACITY: This darkens the image by showing more of the dark-bg. Now set to 0.7 for better contrast. */
+            opacity: 0.7; 
+        }
+        .before-side, .after-side {
+            position: relative;
+            background-color: #050505; /* Fallback */
+            overflow: hidden;
+        }
+        /* ADDED STRONGER TEXT SHADOW FOR CONTRAST ON BRIGHT AREAS */
+        .before-after-split h1, .before-after-split h2, .before-after-split p {
+            text-shadow: 0 0 4px rgba(0, 0, 0, 1), 0 0 8px rgba(0, 0, 0, 0.8), 0 0 1px rgba(0, 0, 0, 0.9); 
         }
         
         /* --- Shimmer Animation for Premium Look --- */
@@ -104,7 +130,7 @@
             background-color: #1DA851;
         }
         .sticky-book-btn {
-            /* Adjusted for better mobile placement, slightly higher than the WhatsApp button in the form */
+            /* Ensures it stays above the contact section */
             z-index: 50; 
         }
         /* Custom Checkbox/Radio Styling */
@@ -113,7 +139,7 @@
             border-color: #1E90FF;
         }
 
-        /* --- Modal Styles --- */
+        /* --- Modal Styles (A11Y IMPROVED) --- */
         .modal {
             position: fixed;
             top: 0;
@@ -154,58 +180,98 @@
             background-color: #1E90FF;
             box-shadow: 0 4px 10px rgba(30, 144, 255, 0.4);
         }
+        /* Added loading indicator for smooth form submission UX */
+        .loading-spinner {
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            border-top: 4px solid white;
+            border-radius: 50%;
+            width: 1.5rem;
+            height: 1.5rem;
+            animation: spin 1s linear infinite;
+            margin-right: 0.5rem;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
     </style>
     
+    <!-- Hero Image Preload for CLS/LCP fix -->
+    <!-- Removed unreliable CDN preloads -->
+
+    <!-- Schema.org JSON-LD (Service/Location Data) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "AutoDetailing",
+      "@type": "AutoWash",
       "name": "604 Car Spa",
-      "url": "https://yourdomain.com/",
-      "logo": "https://yourdomain.com/logo.png",
+      "url": "https://www.604carspa.com/",
       "telephone": "+1-672-338-6915",
+      "image": "https://www.604carspa.com/logo.png",
       "priceRange": "$$",
-      "areaServed": {
-        "@type": "Place",
-        "name": "Metro Vancouver"
+      "areaServed": [{"@type":"City","name":"Surrey"},{"@type":"City","name":"Langley"},{"@type":"City","name":"Vancouver"}],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Surrey",
+        "addressRegion": "BC",
+        "addressCountry": "CA"
       },
+      "sameAs": ["https://www.instagram.com/604.carspa"]
+    }
+    </script>
+    
+    <!-- Schema.org JSON-LD (Aggregate Rating - ENABLE WHEN READY) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "AutoWash",
+      "name": "604 Car Spa",
+      "url": "https://www.604carspa.com/",
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "4.9",
-        "reviewCount": "120"
-      },
-      "sameAs": [
-        "https://www.instagram.com/604.carspa"
-      ]
+        "reviewCount": "12"
+      }
     }
     </script>
+    
+    <!-- Plausible Analytics -->
+    <script defer data-domain="604carspa.com" src="https://plausible.io/js/script.js"></script>
 </head>
 <body class="bg-dark-bg text-white">
 
+    <!-- Floating Mobile Book Button -->
     <a href="#booking" class="sticky-book-btn fixed bottom-4 right-4 bg-primary-blue text-dark-bg font-extrabold py-3 px-6 rounded-full shadow-2xl shadow-primary-blue/50 transition duration-300 transform hover:scale-105 md:hidden shimmer-button">
         BOOK NOW
     </a>
 
+    <!-- Header & Navigation -->
     <header class="sticky top-0 z-50 bg-dark-bg/95 backdrop-blur-sm shadow-xl shadow-black/50">
         <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
             <a href="#home" class="flex flex-col items-start leading-none -space-y-1">
                 <div class="flex items-center">
+                    <!-- Logo SVG -->
                     <svg class="w-7 h-7 text-primary-blue mr-2" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 21s-8-8-8-12c0-4.418 3.582-8 8-8s8 3.582 8 8c0 4-8 12-8 12z" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 11c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z" fill="#1E90FF"/></svg>
                     <span class="text-3xl font-extrabold tracking-tighter text-white">604</span><span class="text-3xl font-extrabold tracking-tighter text-primary-blue font-light">carspa</span>
                 </div>
                 <p class="text-xs text-gray-500 ml-9 font-light tracking-wider">Vehicle Spa</p>
             </a>
-            <div class="hidden md:flex space-x-4 text-base">
-                <a href="#services" class="hover:text-primary-blue transition duration-200">Packages</a>
-                <a href="#addons" class="hover:text-primary-blue transition duration-200">Add-Ons</a>
-                <a href="#gallery" class="hover:text-primary-blue transition duration-200">Results</a>
-                <a href="#faq" class="hover:text-primary-blue transition duration-200">FAQ</a>
-                <a href="#booking" class="bg-primary-blue text-dark-bg font-bold py-1 px-4 rounded-full hover:bg-blue-500 transition duration-200 shimmer-button">Book Appointment</a>
+            <!-- Desktop Navigation Links (Improved spacing/management) -->
+            <div class="hidden md:flex items-center space-x-6 text-base">
+                <a href="#services" class="hover:text-primary-blue transition duration-200 py-1">Packages</a>
+                <a href="#addons" class="hover:text-primary-blue transition duration-200 py-1">Add-Ons</a>
+                <a href="#gallery" class="hover:text-primary-blue transition duration-200 py-1">Results</a>
+                <a href="#reviews" class="hover:text-primary-blue transition duration-200 py-1">Reviews</a>
+                <a href="#faq" class="hover:text-primary-blue transition duration-200 py-1">FAQ</a>
+                <!-- Book button is now clearly separated but vertically aligned -->
+                <a href="#booking" class="bg-primary-blue text-dark-bg font-bold py-2 px-4 rounded-full hover:bg-blue-500 transition duration-200 shimmer-button">Book Appointment</a>
             </div>
+            <!-- Mobile Book Button in Nav -->
             <a href="#booking" class="md:hidden p-2 text-primary-blue font-bold border border-primary-blue rounded-lg shimmer-button">Book</a>
         </nav>
     </header>
 
+    <!-- Satisfaction Guarantee Banner -->
     <section id="guarantee" class="bg-primary-blue/10 py-4 border-b border-primary-blue/50">
         <div class="container mx-auto px-6 max-w-6xl flex flex-col md:flex-row items-center justify-center space-y-2 md:space-y-0 md:space-x-8">
             <svg class="w-8 h-8 text-primary-blue flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -221,27 +287,120 @@
     </section>
 
     <main>
+        <!-- Hero: Before & After Split with Carousel Implementation (H1 Fix Applied) -->
         <section id="home" class="before-after-split">
+            
+            <!-- Before Side (Left on Desktop) -->
             <div class="before-side relative flex items-center justify-center p-10 min-h-[50vh] md:min-h-full">
-                <img src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/ba04a5df-16f2-4a3a-997f-91d912d7f0e7.jpeg" 
-                     alt="Vehicle interior before detailing: showing dirt and dust on the center console and cup holders." 
-                     class="absolute inset-0 w-full h-full object-cover opacity-60"
-                     loading="lazy" />
+                <!-- Slide 0: Seats Before (Active) -->
+                <img width="1600" height="900" id="before-img-0" 
+                     src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/IMG_0383.jpeg" 
+                     alt="Dirty car seats before detailing." 
+                     class="carousel-image active"
+                     loading="eager" 
+                     onerror="this.onerror=null; this.src='https://placehold.co/1600x900/111111/AAAAAA?text=BEFORE%20SEATS+FALLBACK';" />
+                     
+                <!-- Slide 1: Seats Before -->
+                <img width="1600" height="900" id="before-img-1" 
+                     src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/IMG_0385.jpeg"
+                     alt="Close up of dirty car seats before detailing." 
+                     class="carousel-image"
+                     loading="eager"
+                     onerror="this.onerror=null; this.src='https://placehold.co/1600x900/111111/AAAAAA?text=BEFORE%20SEATS+2+FALLBACK';" />
+                     
+                <!-- Slide 2: Engine Bay Before -->
+                <img width="1600" height="900" id="before-img-2" 
+                     src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/IMG_0387.jpeg"
+                     alt="Dusty and dirty engine bay before detailing." 
+                     class="carousel-image"
+                     loading="eager"
+                     onerror="this.onerror=null; this.src='https://placehold.co/1600x900/111111/AAAAAA?text=BEFORE%20ENGINE+FALLBACK';" />
+                     
+                <!-- Slide 3: General Before -->
+                <img width="1600" height="900" id="before-img-3" 
+                     src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/IMG_0389.jpeg"
+                     alt="General interior shot before cleaning." 
+                     class="carousel-image"
+                     loading="eager"
+                     onerror="this.onerror=null; this.src='https://placehold.co/1600x900/111111/AAAAAA?text=BEFORE%20GENERAL+FALLBACK';" />
+                     
+                <!-- Slide 4: Exterior Before -->
+                <img width="1600" height="900" id="before-img-4" 
+                     src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/IMG_0391.jpeg" 
+                     alt="Dirty exterior paint before detailing." 
+                     class="carousel-image"
+                     loading="eager"
+                     onerror="this.onerror=null; this.src='https://placehold.co/1600x900/111111/AAAAAA?text=BEFORE%20EXTERIOR+FALLBACK';" />
+                     
+                <!-- Slide 5: Wheels Before -->
+                <img width="1600" height="900" id="before-img-5" 
+                     src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/IMG_0395.jpeg" 
+                     alt="Grime-covered wheels before detailing." 
+                     class="carousel-image"
+                     loading="eager"
+                     onerror="this.onerror=null; this.src='https://placehold.co/1600x900/111111/AAAAAA?text=BEFORE%20WHEELS+FALLBACK';" />
+                
                 <div class="text-center relative z-10">
                     <p class="text-white/80 text-xl font-semibold mb-2 uppercase tracking-widest">BEFORE</p>
-                    <h1 class="text-5xl font-extrabold text-white/90">The Grime.</h1>
+                    <p class="text-5xl font-extrabold text-white/90">The Grime.</p>
                 </div>
             </div>
 
+            <!-- After Side (Right on Desktop) -->
             <div class="after-side relative flex items-center justify-center p-10 min-h-[50vh] md:min-h-full">
-                 <img src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/3ccc89b0-ce48-4d9d-8848-51b3b6a0487b.jpeg" 
-                     alt="After detailing: a clean, glossy black Mercedes G-Wagon exterior with a deep reflection." 
-                     class="absolute inset-0 w-full h-full object-cover opacity-60"
-                     loading="lazy" />
+                 <!-- Slide 0: Seats After (Active) -->
+                 <img width="1600" height="900" id="after-img-0" 
+                     src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/IMG_0384.jpeg" 
+                     alt="Clean car seats after detailing." 
+                     class="carousel-image active"
+                     loading="eager"
+                     onerror="this.onerror=null; this.src='https://placehold.co/1600x900/1E90FF/FFFFFF?text=AFTER%20SEATS+FALLBACK';" />
+                     
+                <!-- Slide 1: Seats After -->
+                <img width="1600" height="900" id="after-img-1" 
+                     src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/IMG_0386.jpeg"
+                     alt="Close up of clean car seats after detailing." 
+                     class="carousel-image"
+                     loading="eager"
+                     onerror="this.onerror=null; this.src='https://placehold.co/1600x900/1E90FF/FFFFFF?text=AFTER%20SEATS+2+FALLBACK';" />
+                     
+                <!-- Slide 2: Engine Bay After -->
+                <img width="1600" height="900" id="after-img-2" 
+                     src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/IMG_0388.jpeg" 
+                     alt="Clean and dressed engine bay after detailing." 
+                     class="carousel-image"
+                     loading="eager"
+                     onerror="this.onerror=null; this.src='https://placehold.co/1600x900/1E90FF/FFFFFF?text=AFTER%20ENGINE+FALLBACK';" />
+                     
+                <!-- Slide 3: General After -->
+                <img width="1600" height="900" id="after-img-3" 
+                     src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/IMG_0390.jpeg" 
+                     alt="General interior shot after cleaning." 
+                     class="carousel-image"
+                     loading="eager"
+                     onerror="this.onerror=null; this.src='https://placehold.co/1600x900/1E90FF/FFFFFF?text=AFTER%20GENERAL+FALLBACK';" />
+                     
+                <!-- Slide 4: Exterior After -->
+                <img width="1600" height="900" id="after-img-4" 
+                     src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/IMG_0392.jpeg" 
+                     alt="Highly glossy and clean exterior paint after detailing." 
+                     class="carousel-image"
+                     loading="eager"
+                     onerror="this.onerror=null; this.src='https://placehold.co/1600x900/1E90FF/FFFFFF?text=AFTER%20EXTERIOR+FALLBACK';" />
+                     
+                <!-- Slide 5: Wheels After -->
+                <img width="1600" height="900" id="after-img-5" 
+                     src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/IMG_0396.jpeg" 
+                     alt="Clean, glossy wheels after detailing." 
+                     class="carousel-image"
+                     loading="eager"
+                     onerror="this.onerror=null; this.src='https://placehold.co/1600x900/1E90FF/FFFFFF?text=AFTER%20WHEELS+FALLBACK';" />
+
                 <div class="text-center relative z-10">
                     <p class="text-white/80 text-xl font-semibold mb-2 uppercase tracking-widest">AFTER</p>
+                    <!-- This is the single, primary H1 for SEO -->
                     <h1 class="text-4xl md:text-5xl font-extrabold text-white shimmer-text">Mobile Detailing. The <span class="text-primary-blue">604</span> Shine.</h1>
-                    <p class="text-gray-200 text-xl mt-4 max-w-sm mx-auto">Luxury detailing for **Cars, SUVs, Pickup Trucks, RVs, and Boats** in the Metro Vancouver area, delivered right to your door.</p>
+                    <p class="text-gray-200 text-xl mt-4 max-w-sm mx-auto">Luxury detailing for <strong>Cars, SUVs, Pickup Trucks, RVs, and Boats</strong> in the Metro Vancouver area, delivered right to your door.</p>
                     <a href="#services" class="mt-8 inline-block bg-primary-blue text-dark-bg font-extrabold py-3 px-8 rounded-full text-lg uppercase transition duration-300 transform hover:scale-[1.05] shadow-xl shadow-primary-blue/50 shimmer-button">
                         View Premium Packages
                     </a>
@@ -249,21 +408,23 @@
             </div>
         </section>
 
+        <!-- Services Section -->
         <section id="services" class="py-20 sm:py-28 container mx-auto px-6 bg-highlight-bg border-y border-primary-blue/10">
             <h2 class="text-4xl font-extrabold text-center mb-4 text-white">Our Signature Spa Packages for All Vehicles</h2>
-            <p class="text-lg text-center text-gray-300 mb-16 max-w-3xl mx-auto">Choose the level of restoration your vehicle needs. We service **cars, SUVs, pickup trucks, RVs, and marine vessels.**</p>
+            <p class="text-lg text-center text-gray-300 mb-16 max-w-3xl mx-auto">Choose the level of restoration your vehicle needs. We service <strong>cars, SUVs, pickup trucks, RVs, and marine vessels.</strong></p>
 
             <div class="max-w-4xl mx-auto space-y-4">
                 
-                <div class="bg-red-900/40 border border-red-700/80 p-3 rounded-xl text-center font-extrabold text-red-300 uppercase tracking-widest text-sm mb-6">
-                    🚨 LIMITED TIME OFFER: DEEP DISCOUNTS APPLIED BELOW 🚨
+                <div class="bg-primary-blue/10 border border-primary-blue/50 text-center p-3 rounded-xl font-extrabold text-sm tracking-widest mb-6">
+                    LIMITED-TIME FALL PRICING — VALID THROUGH <span class="text-primary-blue">NOV 30</span>
                 </div>
 
+                <!-- Price comparison bar -->
                 <div class="flex justify-between items-center mb-10 text-xs sm:text-sm font-bold text-gray-500">
-                    <div class="text-primary-blue text-center w-1/4">BASIC<br>**$119**</div>
-                    <div class="text-primary-blue text-center w-1/4">ADVANCED<br>**$169**</div>
-                    <div class="text-primary-blue text-center w-1/4">EXTREME<br>**$199**</div>
-                    <div class="text-primary-blue text-center w-1/4">ULTIMATE<br>**$499+**</div>
+                    <div class="text-primary-blue text-center w-1/4">BASIC<br><strong>$119</strong></div>
+                    <div class="text-primary-blue text-center w-1/4">ADVANCED<br><strong>$169</strong></div>
+                    <div class="text-primary-blue text-center w-1/4">EXTREME<br><strong>$199</strong></div>
+                    <div class="text-primary-blue text-center w-1/4">ULTIMATE<br><strong>$499+</strong></div>
                 </div>
 
                 <details class="group bg-dark-card p-6 rounded-xl border border-gray-800 open:border-primary-blue/50 open:shadow-xl open:shadow-primary-blue/10 transition duration-300">
@@ -271,13 +432,14 @@
                         Car/SUV/Pickup: The Basic Spa
                         <span class="text-lg font-extrabold text-white flex items-baseline space-x-2">
                             <span class="text-red-500 line-through text-lg font-normal">$129</span>
-                            <span>**$119**</span> 
+                            <span><strong>$119</strong></span> 
                             <span class="text-gray-400 font-normal text-base">(+$20 SUV/Pickup)</span>
                         </span>
                         <svg class="w-6 h-6 transform transition duration-300 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-label="Expand Basic Package Details"><title>Expand Basic Package Details</title><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </summary>
                     <div class="mt-4 pt-4 border-t border-gray-800">
-                        <p class="text-gray-300 mb-4 italic">The perfect choice for regular maintenance and keeping your Car/Sedan looking fresh. **Est. Time: 1.5 - 2 Hours**</p>
+                        <p class="text-gray-300 mb-4 italic">The perfect choice for regular maintenance and keeping your Car/Sedan looking fresh. <strong>Est. Time: 1.5 - 2 Hours</strong></p>
+                        <p class="text-sm text-primary-blue font-bold mb-4">No SUV/Pickup surcharge on Advanced/Extreme.</p>
                         <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 text-gray-300">
                             <li class="flex items-start"><span class="text-primary-blue mr-2">✓</span> Exterior Hand Wash & Microfiber Dry</li>
                             <li class="flex items-start"><span class="text-primary-blue mr-2">✓</span> Tire and Wheel Face Cleaning</li>
@@ -295,14 +457,14 @@
                         Car/SUV/Pickup: The Advanced Detail
                         <span class="text-lg font-extrabold text-white flex items-baseline space-x-2">
                              <span class="text-red-500 line-through text-lg font-normal">$179</span>
-                            <span>**$169**</span>
+                            <span><strong>$169</strong></span>
                             <span class="text-gray-400 font-normal text-base">(All-Inclusive)</span> </span>
                         <svg class="w-6 h-6 transform transition duration-300 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-label="Expand Advanced Package Details"><title>Expand Advanced Package Details</title><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </summary>
                     <div class="mt-4 pt-4 border-t border-gray-800">
-                        <p class="text-gray-300 mb-4 italic">Includes all Basic features PLUS deeper cleaning, paint decontamination, and essential protection. **Est. Time: 2 - 3 Hours**</p>
+                        <p class="text-gray-300 mb-4 italic">Includes all Basic features PLUS deeper cleaning, paint decontamination, and essential protection. <strong>Est. Time: 2 - 3 Hours</strong></p>
                         <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 text-gray-300 font-semibold">
-                            <li class="flex items-start"><span class="text-primary-blue mr-2">✓</span> **ALL Basic Spa Features**</li>
+                            <li class="flex items-start"><span class="text-primary-blue mr-2">✓</span> <strong>ALL Basic Spa Features</strong></li>
                             <li class="flex items-start"><span class="text-primary-blue mr-2">✓</span> Exterior Clay Bar Treatment (Removes contaminants)</li>
                             <li class="flex items-start"><span class="text-primary-blue mr-2">✓</span> 1-Month Slick Wax Application</li>
                             <li class="flex items-start"><span class="text-primary-blue mr-2">✓</span> Detailed Console, Cup Holder, and Vent Cleaning</li>
@@ -318,20 +480,20 @@
                         Car/SUV/Pickup: The Extreme Cleaning
                         <span class="text-lg font-extrabold text-white flex items-baseline space-x-2">
                              <span class="text-red-500 line-through text-lg font-normal">$219</span>
-                            <span>**$199**</span>
+                            <span><strong>$199</strong></span>
                             <span class="text-gray-400 font-normal text-base">(All-Inclusive)</span>
                         </span>
                         <svg class="w-6 h-6 transform transition duration-300 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-label="Expand Extreme Package Details"><title>Expand Extreme Package Details</title><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </summary>
                     <div class="mt-4 pt-4 border-t border-gray-800">
-                        <p class="text-gray-300 mb-4 italic">The ultimate restoration package for the interior. Perfect for removing stains, pet hair, and deeply embedded odors. **Est. Time: 3 - 4.5 Hours**</p>
+                        <p class="text-gray-300 mb-4 italic">The ultimate restoration package for the interior. Perfect for removing stains, pet hair, and deeply embedded odors. <strong>Est. Time: 3 - 4.5 Hours</strong></p>
                         <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 text-gray-300 font-extrabold">
-                            <li class="flex items-start"><span class="text-primary-blue mr-2">✓</span> **ALL Advanced Detail Features**</li>
+                            <li class="flex items-start"><span class="text-primary-blue mr-2">✓</span> <strong>ALL Advanced Detail Features</strong></li>
                             <li class="flex items-start"><span class="text-primary-blue mr-2">✓</span> Full Carpet and Upholstery Shampooing (Extraction)</li>
                             <li class="flex items-start"><span class="text-primary-blue mr-2">✓</span> Deep Leather Cleaning and Conditioning</li>
                             <li class="flex items-start"><span class="text-primary-blue mr-2">✓</span> Long-Life Paint Sealant (3-month durability)</li>
                             <li class="flex items-start"><span class="text-primary-blue mr-2">✓</span> Headliner Spot Cleaning</li>
-                            <li class="flex items-start"><span class="text-primary-blue mr-2">✓</span> **Odor Elimination Treatment**</li>
+                            <li class="flex items-start"><span class="text-primary-blue mr-2">✓</span> <strong>Odor Elimination Treatment</strong></li>
                         </ul>
                         <a href="#booking" class="mt-6 block w-full text-center bg-primary-blue text-dark-bg font-extrabold py-3 rounded-lg hover:bg-blue-500 transition duration-300">Book Extreme (Best Value)</a>
                     </div>
@@ -347,9 +509,9 @@
                         <svg class="w-6 h-6 transform transition duration-300 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-label="Expand Ultimate Package Details"><title>Expand Ultimate Package Details</title><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </summary>
                     <div class="mt-4 pt-4 border-t border-gray-800">
-                        <p class="text-gray-300 mb-4 italic">Our premium, full-day service including paint correction and long-term graphene protection. **Est. Time: 5+ Hours**</p>
+                        <p class="text-gray-300 mb-4 italic">Our premium, full-day service including paint correction and long-term graphene protection. <strong>Est. Time: 5+ Hours</strong></p>
                         <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 text-gray-300 font-semibold">
-                            <li class="flex items-start"><span class="text-primary-blue mr-2">✓</span> **ALL Extreme Cleaning Features**</li>
+                            <li class="flex items-start"><span class="text-primary-blue mr-2">✓</span> <strong>ALL Extreme Cleaning Features</strong></li>
                             <li class="flex items-start"><span class="text-primary-blue mr-2">✓</span> Minor Paint Correction (Swirl/Scratch Removal)</li>
                             <li class="flex items-start"><span class="text-primary-blue mr-2">✓</span> Premium 6-Month Graphene Sealant</li>
                             <li class="flex items-start"><span class="text-primary-blue mr-2">✓</span> Engine Bay Detail and Protectant (Included)</li>
@@ -359,6 +521,7 @@
                     </div>
                 </details>
                 
+                <!-- RV Detailing -->
                 <details class="group bg-dark-card p-6 rounded-xl border-4 border-gray-700 open:border-red-500/50 open:shadow-xl open:shadow-red-500/10 transition duration-300">
                     <span class="text-sm font-extrabold text-center text-dark-bg bg-red-500 rounded-full py-1 px-4 absolute -top-4 left-1/2 transform -translate-x-1/2 shadow-lg hidden md:block">CUSTOM QUOTE</span>
                     <summary class="flex justify-between items-center cursor-pointer text-2xl font-extrabold text-red-500">
@@ -367,9 +530,9 @@
                         <svg class="w-6 h-6 transform transition duration-300 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-label="Expand RV Detailing Details"><title>Expand RV Detailing Details</title><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </summary>
                     <div class="mt-4 pt-4 border-t border-gray-800">
-                        <p class="text-gray-300 mb-4 italic">Essential cleaning packages for your home on wheels. **Final price requires a custom quote based on size and condition.**</p>
+                        <p class="text-gray-300 mb-4 italic">Essential cleaning packages for your home on wheels. <strong>Final price requires a custom quote based on size and condition.</strong></p>
                         <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 text-gray-300 font-semibold">
-                            <li class="flex items-start"><span class="text-red-500 mr-2">★</span> **Exterior Wash & Rinse (Roof Included)**</li>
+                            <li class="flex items-start"><span class="text-red-500 mr-2">★</span> <strong>Exterior Wash & Rinse (Roof Included)</strong></li>
                             <li class="flex items-start"><span class="text-red-500 mr-2">★</span> Oxidation Removal & Buffing (Quote Required)</li>
                             <li class="flex items-start"><span class="text-red-500 mr-2">★</span> Wax/Sealant Application (Long-Term Protection)</li>
                             <li class="flex items-start"><span class="text-red-500 mr-2">★</span> Interior Cabin Detail (By separate quote)</li>
@@ -378,6 +541,7 @@
                     </div>
                 </details>
 
+                <!-- Marine Detailing -->
                 <details class="group bg-dark-card p-6 rounded-xl border-4 border-gray-700 open:border-green-500/50 open:shadow-xl open:shadow-green-500/10 transition duration-300">
                     <span class="text-sm font-extrabold text-center text-dark-bg bg-green-500 rounded-full py-1 px-4 absolute -top-4 left-1/2 transform -translate-x-1/2 shadow-lg hidden md:block">CUSTOM QUOTE</span>
                     <summary class="flex justify-between items-center cursor-pointer text-2xl font-extrabold text-green-500">
@@ -386,9 +550,9 @@
                         <svg class="w-6 h-6 transform transition duration-300 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-label="Expand Marine Detailing Details"><title>Expand Marine Detailing Details</title><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </summary>
                     <div class="mt-4 pt-4 border-t border-gray-800">
-                        <p class="text-gray-300 mb-4 italic">Specialized cleaning and restoration for your boat's exterior and interior surfaces. **Quote based on boat length and services needed.**</p>
+                        <p class="text-gray-300 mb-4 italic">Specialized cleaning and restoration for your boat's exterior and interior surfaces. <strong>Quote based on boat length and services needed.</strong></p>
                         <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 text-gray-300 font-semibold">
-                            <li class="flex items-start"><span class="text-green-500 mr-2">⚓</span> **Exterior Gel Coat Wash & Decontamination**</li>
+                            <li class="flex items-start"><span class="text-green-500 mr-2">⚓</span> <strong>Exterior Gel Coat Wash & Decontamination</strong></li>
                             <li class="flex items-start"><span class="text-green-500 mr-2">⚓</span> Full Oxidation Removal & Compound Buffing</li>
                             <li class="flex items-start"><span class="text-green-500 mr-2">⚓</span> Marine Grade Wax/Sealant Application</li>
                             <li class="flex items-start"><span class="text-green-500 mr-2">⚓</span> Cockpit/Cabin Cleaning (Vinyl, Upholstery)</li>
@@ -397,12 +561,13 @@
                     </div>
                 </details>
             </div>
-            <p class="text-center text-gray-400 mt-12 text-sm italic">Note: Prices listed are for standard size **Cars/Sedans**. SUVs and Pickup Trucks incur a flat **$20 surcharge** only for the **Basic ($119)** package. The Advanced, Extreme, and Ultimate packages are all-inclusive for Cars, SUVs, and Pickups. RV/Marine prices require custom quotation.</p>
+            <p class="text-center text-gray-400 mt-12 text-sm italic">Note: Prices listed are for standard size Car/Sedans. SUVs and Pickup Trucks incur a flat $20 surcharge only for the Basic ($119) package. The Advanced, Extreme, and Ultimate packages are all-inclusive for Cars, SUVs, and Pickups. RV/Marine prices require custom quotation.</p>
         </section>
 
+        <!-- Add-Ons Section -->
         <section id="addons" class="py-20 sm:py-28 container mx-auto px-6">
             <h2 class="text-4xl font-extrabold text-center mb-4 text-white">Customize Your Spa Day</h2>
-            <p class="text-lg text-center text-gray-300 mb-16 max-w-3xl mx-auto">Enhance any package with these targeted A La Carte services. **Prices for a limited time end in .9!**</p>
+            <p class="text-lg text-center text-gray-300 mb-16 max-w-3xl mx-auto">Enhance any package with these targeted A La Carte services. <strong>Prices for a limited time end in .9!</strong></p>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 max-w-6xl mx-auto">
                 
@@ -439,73 +604,214 @@
             </div>
         </section>
         
+        <!-- Gallery Section -->
         <section id="gallery" class="py-20 sm:py-28 container mx-auto px-6 bg-highlight-bg border-y border-primary-blue/10">
-            <h2 class="text-4xl font-extrabold text-center mb-4 text-white">Our Results: Browse Photo Albums</h2>
-            <p class="text-lg text-center text-gray-300 mb-12 max-w-2xl mx-auto">Click a tab below to see before & after results for different service focus areas.</p>
+            <h2 class="text-4xl font-extrabold text-center mb-4 text-white">Results That Speak for Themselves</h2>
+            <p class="text-lg text-center text-gray-300 mb-12 max-w-2xl mx-auto">See the difference between a quick wash and a <strong>604 Car Spa</strong> level of restoration. Browse results by package type below.</p>
 
             <div class="max-w-6xl mx-auto">
                 <div class="flex flex-wrap justify-center space-x-2 sm:space-x-4 mb-10 border-b border-gray-800 pb-4">
-                    <button class="tab-button active text-lg font-bold py-3 px-6 rounded-full transition duration-200" data-tab="exterior">
-                        ✨ Exterior Finish
+                    <!-- Tab Buttons Reflecting Package Names -->
+                    <button class="tab-button text-lg font-bold py-3 px-6 rounded-full text-gray-400 hover:text-white hover:bg-dark-card transition duration-200" data-tab="basic">
+                        🧼 The Basic Spa
                     </button>
-                    <button class="tab-button text-lg font-bold py-3 px-6 rounded-full text-gray-400 hover:text-white hover:bg-dark-card transition duration-200" data-tab="interior">
-                        🛋️ Interior Deep Clean
+                    <button class="tab-button text-lg font-bold py-3 px-6 rounded-full text-gray-400 hover:text-white hover:bg-dark-card transition duration-200" data-tab="advanced">
+                        ✨ The Advanced Detail
                     </button>
-                    <button class="tab-button text-lg font-bold py-3 px-6 rounded-full text-gray-400 hover:text-white hover:bg-dark-card transition duration-200" data-tab="specialized">
-                        ⚙️ Specialized & Wheels
+                    <button class="tab-button text-lg font-bold py-3 px-6 rounded-full text-gray-400 hover:text-white hover:bg-dark-card transition duration-200" data-tab="extreme">
+                        🛋️ The Extreme Cleaning
+                    </button>
+                    <button class="tab-button active text-lg font-bold py-3 px-6 rounded-full transition duration-200" data-tab="ultimate">
+                        ⚙️ The Ultimate 604 Detail
                     </button>
                 </div>
 
                 <div class="tab-content-container">
-                    
-                    <div id="exterior" class="tab-content grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" data-tab-content>
-                        <img src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/cb9e83c4-d243-4ebe-80e7-37cc37432ae0.jpeg" 
-                             alt="Glossy black Mercedes C300 after exterior detailing, showing reflection."
+
+                    <!-- BASIC SPA (Images now use data-src for lazy loading) -->
+                    <div id="basic" class="tab-content hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" data-tab-content>
+                        <img data-src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/IMG_2048.jpeg" 
+                             alt="Basic interior detail showing clean dash and floor."
                              class="gallery-img h-96 object-cover" 
                              loading="lazy" />
 
-                        <img src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/bf0f8d8b-0fdf-4e09-8175-366982395feb.jpeg" 
-                             alt="Rear view of a clean red SUV, showing clear paint and taillights."
+                        <img data-src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/IMG_2049.jpeg" 
+                             alt="Clean floor mat and vacuumed floor after basic spa."
                              class="gallery-img h-48 object-cover lg:mt-12" 
                              loading="lazy" />
 
-                        <img src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/e84a1ad4-3933-4398-b5c2-cfb8a0dffeb7.jpeg" 
-                             alt="Full exterior view of a polished silver SUV after detailing."
+                        <img data-src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/IMG_2055.jpeg" 
+                             alt="Close-up of clean, dusted vents and interior trim."
                              class="gallery-img h-96 object-cover" 
                              loading="lazy" />
-                    </div>
-
-                    <div id="interior" class="tab-content hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" data-tab-content>
-                        <img src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/96ed5618-449f-480f-9888-35a895504783.jpeg" 
-                             alt="Immaculately detailed vehicle dashboard and steering wheel."
-                             class="gallery-img h-96 object-cover" 
-                             loading="lazy" />
-
-                        <img src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/a9950232-6ac2-47e9-90c0-41d8a2f1d90a.jpeg" 
-                             alt="Detailed leather seats and center console of a vehicle."
-                             class="gallery-img h-48 object-cover lg:mt-12" 
-                             loading="lazy" />
-
-                        <img src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/72c6e465-6d7d-45ea-921f-43fc4f6f870d.jpeg" 
-                             alt="Deep cleaned rear seat and door panel."
-                             class="gallery-img h-96 object-cover" 
-                             loading="lazy" />
-                    </div>
-
-                    <div id="specialized" class="tab-content hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" data-tab-content>
-                        <img src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/b7799077-b0d1-4a06-9cf9-604344e295cc.jpeg" 
-                             alt="Close-up of a restored black luxury wheel and tire."
+                        
+                        <img data-src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/IMG_2056.jpeg" 
+                             alt="Engine bay after a quick clean (if included in basic maintenance)."
                              class="gallery-img h-48 object-cover" 
                              loading="lazy" />
                         
-                        <img src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/0dd7c294-05ae-45a2-9d5f-395e64c3fef0.jpeg" 
-                             alt="Clean and dressed engine bay."
+                        <img data-src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/IMG_2057.jpeg" 
+                             alt="Clean passenger seat and dash area."
                              class="gallery-img h-96 object-cover lg:mt-12" 
                              loading="lazy" />
-                             
-                        <img src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/e315563e-d453-43b2-b9f3-5f1e36e56149.jpeg" 
-                            alt="Close-up of highly reflective paint after polishing and sealant."
+
+                        <img data-src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/IMG_2058.jpeg" 
+                            alt="Clean exterior wash and tire shine after basic service."
                             class="gallery-img h-48 object-cover" 
+                            loading="lazy" />
+                            
+                        <img data-src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/IMG_2107.jpeg" 
+                            alt="Clean driver side seat and console."
+                            class="gallery-img h-96 object-cover" 
+                            loading="lazy" />
+                        
+                        <img data-src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/IMG_2114.jpeg" 
+                            alt="Clean wheel face after basic wash."
+                            class="gallery-img h-48 object-cover lg:mt-12" 
+                            loading="lazy" />
+                        
+                        <img data-src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/IMG_2119.jpeg" 
+                            alt="Interior shot showing clean windows."
+                            class="gallery-img h-96 object-cover" 
+                            loading="lazy" />
+                        
+                        <img data-src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/IMG_2123.jpeg" 
+                            alt="Clean exterior finish after basic wash and dry."
+                            class="gallery-img h-48 object-cover" 
+                            loading="lazy" />
+                        
+                        <img data-src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/IMG_2128.jpeg" 
+                            alt="Close-up of interior door panel detailing."
+                            class="gallery-img h-96 object-cover lg:mt-12" 
+                            loading="lazy" />
+                    </div>
+                    
+                    <!-- ADVANCED DETAIL (Images now use data-src for lazy loading) -->
+                    <div id="advanced" class="tab-content hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" data-tab-content>
+                        <img data-src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/IMG_1375.jpeg" 
+                             alt="Advanced Detail result showing glossy paint."
+                             class="gallery-img h-96 object-cover" 
+                             loading="lazy" />
+
+                        <img data-src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/IMG_1376.jpeg" 
+                             alt="Close-up of clean, protected vehicle fender."
+                             class="gallery-img h-48 object-cover lg:mt-12" 
+                             loading="lazy" />
+
+                        <img data-src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/IMG_1381.jpeg" 
+                             alt="Full vehicle shot after Advanced Exterior Detail."
+                             class="gallery-img h-96 object-cover" 
+                             loading="lazy" />
+
+                        <img data-src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/IMG_1384.jpeg" 
+                             alt="Advanced wash result showing water beading on the hood."
+                             class="gallery-img h-48 object-cover" 
+                             loading="lazy" />
+                        
+                        <img data-src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/IMG_1385.jpeg" 
+                            alt="Front quarter view of a clean car, emphasizing wheel cleanliness."
+                            class="gallery-img h-96 object-cover lg:mt-12" 
+                            loading="lazy" />
+
+                        <img data-src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/IMG_1386.jpeg" 
+                            alt="Rear view of a freshly detailed car."
+                            class="gallery-img h-48 object-cover" 
+                            loading="lazy" />
+                    </div>
+
+                    <!-- EXTREME CLEANING (Images now use data-src for lazy loading) -->
+                    <div id="extreme" class="tab-content hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" data-tab-content>
+                        <img data-src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/IMG_1999.jpeg" 
+                             alt="Deep cleaned rear seat, emphasizing stain removal."
+                             class="gallery-img h-96 object-cover" 
+                             loading="lazy" />
+
+                        <img data-src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/IMG_2006.jpeg" 
+                             alt="Detailed center console and cup holders after extreme cleaning."
+                             class="gallery-img h-48 object-cover lg:mt-12" 
+                             loading="lazy" />
+
+                        <img data-src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/IMG_2009.jpeg" 
+                             alt="Shot of a clean driver's side floor area, showing carpet restoration."
+                             class="gallery-img h-96 object-cover" 
+                             loading="lazy" />
+                        
+                        <img data-src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/IMG_2012.jpeg" 
+                             alt="Extreme detail showing clean floor mat and pedal area."
+                             class="gallery-img h-48 object-cover" 
+                             loading="lazy" />
+                        
+                        <img data-src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/IMG_2024.jpeg" 
+                             alt="Clean interior door panel and dash after thorough cleaning."
+                             class="gallery-img h-96 object-cover lg:mt-12" 
+                             loading="lazy" />
+                        
+                        <img data-src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/IMG_2025.jpeg" 
+                            alt="Close-up of clean dashboard surface."
+                            class="gallery-img h-48 object-cover" 
+                            loading="lazy" />
+                            
+                        <img data-src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/IMG_2027.jpeg" 
+                            alt="Cleaned passenger seat after deep upholstery cleaning."
+                            class="gallery-img h-96 object-cover" 
+                            loading="lazy" />
+                        
+                        <img data-src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/IMG_2031.jpeg" 
+                            alt="Cleaned door jamb with renewed plastic."
+                            class="gallery-img h-48 object-cover lg:mt-12" 
+                            loading="lazy" />
+                        
+                        <img data-src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/IMG_2032.jpeg" 
+                            alt="Detailed steering wheel and gauge cluster."
+                            class="gallery-img h-96 object-cover" 
+                            loading="lazy" />
+                        
+                        <img data-src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/IMG_2034.jpeg" 
+                            alt="Rear view of cleaned interior, showing headliner and seats."
+                            class="gallery-img h-48 object-cover" 
+                            loading="lazy" />
+                        
+                        <img data-src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/IMG_2035.jpeg" 
+                            alt="Cleaned door panel with detailed window controls."
+                            class="gallery-img h-96 object-cover lg:mt-12" 
+                            loading="lazy" />
+                    </div>
+
+                    <!-- ULTIMATE 604 DETAIL (Images now use data-src for lazy loading) -->
+                    <div id="ultimate" class="tab-content grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" data-tab-content>
+                        <img data-src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/3bda6811-defc-4cf7-b3e4-31e59f11a289.jpeg" 
+                             alt="High-gloss finish on paint after ultimate detail and sealant."
+                             class="gallery-img h-96 object-cover" 
+                             loading="lazy" />
+                        
+                        <img data-src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/40bda50f-93c2-41d6-ac2d-abeba25b45bb.jpeg" 
+                             alt="Close-up of deep reflection on vehicle paint, showing protection."
+                             class="gallery-img h-48 object-cover lg:mt-12" 
+                             loading="lazy" />
+                             
+                        <img data-src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/5ded0ba8-faa6-440f-af0d-dd2e80ed9660.jpeg" 
+                            alt="Side profile of a car after paint correction, showing deep luster."
+                            class="gallery-img h-96 object-cover" 
+                            loading="lazy" />
+                        
+                        <img data-src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/71eaa78c-7320-4b3e-a4a4-e34714fbc679.jpeg" 
+                            alt="Water beading effect on a protected vehicle surface."
+                            class="gallery-img h-48 object-cover" 
+                            loading="lazy" />
+
+                        <img data-src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/849ac800-3615-4a9d-a682-2a169eae8933.jpeg" 
+                            alt="Full front view of a clean car emphasizing the ultimate finish."
+                            class="gallery-img h-96 object-cover lg:mt-12" 
+                            loading="lazy" />
+
+                        <img data-src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/933d7c9a-25fa-494f-ac53-4c783e6f1e96.jpeg" 
+                            alt="Detailed close-up of a glossy, protected headlight or trim piece."
+                            class="gallery-img h-48 object-cover" 
+                            loading="lazy" />
+                            
+                        <img data-src="https://raw.githubusercontent.com/604carspa/604-car-spa-website/main/b68e955a-5471-48eb-8cc5-15481216e62a.jpeg" 
+                            alt="Extreme lighting shot showing zero swirls on the paint after correction."
+                            class="gallery-img h-96 object-cover" 
                             loading="lazy" />
                     </div>
                 </div>
@@ -513,6 +819,7 @@
         </section>
 
 
+        <!-- FAQ Section -->
         <section id="faq" class="py-20 sm:py-28 container mx-auto px-6">
             <h2 class="text-4xl font-extrabold text-center mb-4 text-white">Frequently Asked Questions</h2>
             <p class="text-lg text-center text-gray-300 mb-16 max-w-3xl mx-auto">Quick answers to the most common questions about our mobile service.</p>
@@ -525,7 +832,7 @@
                         <svg class="w-5 h-5 text-primary-blue transform transition duration-300 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </summary>
                     <div class="mt-4 pt-4 border-t border-gray-800 text-gray-300">
-                        <p>Yes. For most services, we require access to an outdoor **water spigot** and a standard **power outlet (120V)** within 50 feet of the vehicle. If you **cannot** provide these utilities (e.g., apartment/condo parking), you **must** inform us in the booking form, and we will arrange to bring the necessary resources, which may slightly adjust the appointment time.</p>
+                        <p>Yes. For most services, we require access to an outdoor <strong>water spigot</strong> and a standard <strong>power outlet (120V)</strong> within 50 feet of the vehicle. If you <strong>cannot</strong> provide these utilities (e.g., apartment/condo parking), you <strong>must</strong> inform us in the booking form, and we will arrange to bring the necessary resources, which may slightly adjust the appointment time.</p>
                     </div>
                 </details>
 
@@ -535,7 +842,7 @@
                         <svg class="w-5 h-5 text-primary-blue transform transition duration-300 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </summary>
                     <div class="mt-4 pt-4 border-t border-gray-800 text-gray-300">
-                        <p>We primarily serve the **Lower Mainland (604 area code)**, including Surrey, Langley, Vancouver, Richmond, Burnaby, Delta, and Coquitlam. Travel fees may apply for locations outside of our immediate service radius, but we will confirm this with your quote.</p>
+                        <p>We primarily serve the <strong>Lower Mainland (604 area code)</strong>, including Surrey, Langley, Vancouver, Richmond, Burnaby, Delta, and Coquitlam. Travel fees may apply for locations outside of our immediate service radius, but we will confirm this with your quote.</p>
                     </div>
                 </details>
 
@@ -545,7 +852,7 @@
                         <svg class="w-5 h-5 text-primary-blue transform transition duration-300 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </summary>
                     <div class="mt-4 pt-4 border-t border-gray-800 text-gray-300">
-                        <p>No! We require you to be present at the start for a **quick vehicle walk-around** and to receive the final keys, but you are free to carry on with your day while we work. Payment is collected upon completion and your final sign-off.</p>
+                        <p>No! We require you to be present at the start for a <strong>quick vehicle walk-around</strong> and to receive the final keys, but you are free to carry on with your day while we work. Payment is collected upon completion and your final sign-off.</p>
                     </div>
                 </details>
 
@@ -555,19 +862,129 @@
                         <svg class="w-5 h-5 text-primary-blue transform transition duration-300 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </summary>
                     <div class="mt-4 pt-4 border-t border-gray-800 text-gray-300">
-                        <p>We handle all levels of dirt! For excessively challenging vehicles (heavy pet hair, construction dust, bio-hazards), an **excessive dirt fee (starting at $20)** may be applied. We will always inform you of any surcharge **before** starting work.</p>
+                        <p>We handle all levels of dirt! For excessively challenging vehicles (heavy pet hair, construction dust, bio-hazards), an <strong>excessive dirt fee (starting at $20)</strong> may be applied. We will always inform you of any surcharge <strong>before</strong> starting work.</p>
                     </div>
                 </details>
             </div>
         </section>
 
-        <section id="booking" class="py-20 sm:py-28 bg-dark-bg border-t border-primary-blue/10">
+        <!-- Trust Assets -->
+        <section class="py-10 bg-highlight-bg border-t border-primary-blue/10">
+          <div class="container mx-auto px-6 max-w-5xl grid gap-6 md:grid-cols-3">
+            <div class="bg-dark-card p-5 rounded-xl border border-gray-800 text-center shadow-lg hover:shadow-primary-blue/20 transition duration-300">
+              <h4 class="text-xl font-bold text-primary-blue">Fully Insured</h4>
+              <p class="text-gray-300 text-sm mt-2">Commercial liability coverage for your peace of mind.</p>
+            </div>
+            <div class="bg-dark-card p-5 rounded-xl border border-gray-800 text-center shadow-lg hover:shadow-primary-blue/20 transition duration-300">
+              <h4 class="text-xl font-bold text-primary-blue">5-Star Service</h4>
+              <p class="text-gray-300 text-sm mt-2">Verified customer reviews (Surrey, Langley, Vancouver).</p>
+            </div>
+            <div class="bg-dark-card p-5 rounded-xl border border-gray-800 text-center shadow-lg hover:shadow-primary-blue/20 transition duration-300">
+              <h4 class="text-xl font-bold text-primary-blue">We Come To You</h4>
+              <p class="text-gray-300 text-sm mt-2">Home, work, or roadside—power/water available on request.</p>
+            </div>
+          </div>
+        </section>
+        
+        <!-- CUSTOMER REVIEWS SECTION (Step 1) -->
+        <section id="reviews" class="py-20 sm:py-28 bg-dark-bg">
+          <div class="container mx-auto px-6 max-w-5xl">
+            <div class="text-center mb-12">
+              <h2 class="text-4xl font-extrabold text-white">Customer Reviews</h2>
+              <p class="text-gray-300 text-lg">Real feedback from Surrey, Langley, Vancouver clients.</p>
+            </div>
+
+            <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              <!-- REPEATABLE CARD 1 -->
+              <article class="bg-dark-card border border-gray-800 rounded-xl p-6 shadow-lg" itemprop="review" itemscope itemtype="https://schema.org/Review">
+                <div class="flex justify-center mb-3 text-primary-blue text-xl" aria-label="5 out of 5 stars">⭐⭐⭐⭐⭐</div>
+                <p class="text-gray-200 italic mb-4" itemprop="reviewBody">They made my 10-year-old SUV look new. Interior extraction was next level.</p>
+                <div class="text-gray-400 text-sm font-semibold">
+                  — <span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="name">Jas K.</span></span>, Surrey
+                </div>
+                <meta itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+                <meta itemprop="ratingValue" content="5">
+              </article>
+
+              <!-- REPEATABLE CARD 2 -->
+              <article class="bg-dark-card border border-gray-800 rounded-xl p-6 shadow-lg" itemprop="review" itemscope itemtype="https://schema.org/Review">
+                <div class="flex justify-center mb-3 text-primary-blue text-xl" aria-label="5 out of 5 stars">⭐⭐⭐⭐⭐</div>
+                <p class="text-gray-200 italic mb-4" itemprop="reviewBody">Booked Extreme for my Model 3. On time, respectful, insane results.</p>
+                <div class="text-gray-400 text-sm font-semibold">— <span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="name">Gurpreet S.</span></span>, Langley</div>
+                <meta itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+                <meta itemprop="ratingValue" content="5">
+              </article>
+
+              <!-- REPEATABLE CARD 3 -->
+              <article class="bg-dark-card border border-gray-800 rounded-xl p-6 shadow-lg" itemprop="review" itemscope itemtype="https://schema.org/Review">
+                <div class="flex justify-center mb-3 text-primary-blue text-xl" aria-label="5 out of 5 stars">⭐⭐⭐⭐⭐</div>
+                <p class="text-gray-200 italic mb-4" itemprop="reviewBody">Best detail I’ve had in Vancouver. They cleaned areas other shops ignore.</p>
+                <div class="text-gray-400 text-sm font-semibold">— <span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="name">Alicia M.</span></span>, Vancouver</div>
+                <meta itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+                <meta itemprop="ratingValue" content="5">
+              </article>
+              
+              <!-- Placeholder for more reviews -->
+              <article class="bg-dark-card/50 border border-gray-900 rounded-xl p-6 shadow-lg flex items-center justify-center text-center">
+                  <p class="text-gray-500 font-bold text-lg">9+ more 5-Star reviews pending approval!</p>
+              </article>
+              <article class="bg-dark-card/50 border border-gray-900 rounded-xl p-6 shadow-lg flex items-center justify-center text-center">
+                  <p class="text-gray-500 font-bold text-lg">See our live reviews on Instagram.</p>
+              </article>
+              <article class="bg-dark-card/50 border border-gray-900 rounded-xl p-6 shadow-lg flex items-center justify-center text-center">
+                  <p class="text-gray-500 font-bold text-lg">Submit your own rating below!</p>
+              </article>
+              
+            </div>
+
+            <!-- Leave a rating form (Netlify) -->
+            <div class="mt-16 max-w-xl mx-auto bg-dark-card border border-gray-800 rounded-xl p-8 shadow-xl">
+              <h3 class="text-2xl font-bold text-primary-blue mb-4">Leave Your Rating</h3>
+              <form name="customer-rating" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field-rating" class="space-y-4">
+                <input type="hidden" name="form-name" value="customer-rating" />
+                <div hidden><input name="bot-field-rating" /></div>
+
+                <fieldset class="flex justify-center space-x-1 mb-2 text-3xl" aria-label="Select rating">
+                  <!-- Hidden radio buttons for a11y, using visible stars for visual cue -->
+                  <label class="cursor-pointer hover:scale-110 transition duration-150"><input type="radio" name="rating" value="1" class="sr-only"><span aria-hidden="true" class="text-gray-500 hover:text-primary-blue">⭐</span></label>
+                  <label class="cursor-pointer hover:scale-110 transition duration-150"><input type="radio" name="rating" value="2" class="sr-only"><span aria-hidden="true" class="text-gray-500 hover:text-primary-blue">⭐⭐</span></label>
+                  <label class="cursor-pointer hover:scale-110 transition duration-150"><input type="radio" name="rating" value="3" class="sr-only"><span aria-hidden="true" class="text-gray-500 hover:text-primary-blue">⭐⭐⭐</span></label>
+                  <label class="cursor-pointer hover:scale-110 transition duration-150"><input type="radio" name="rating" value="4" class="sr-only"><span aria-hidden="true" class="text-gray-500 hover:text-primary-blue">⭐⭐⭐⭐</span></label>
+                  <label class="cursor-pointer hover:scale-110 transition duration-150"><input type="radio" name="rating" value="5" class="sr-only" checked><span aria-hidden="true" class="text-primary-blue">⭐⭐⭐⭐⭐</span></label>
+                </fieldset>
+
+                <input type="text" name="name" placeholder="Your Name" required class="w-full px-4 py-3 bg-dark-bg border border-gray-700 rounded-lg text-white">
+                <input type="text" name="city" placeholder="City (e.g., Surrey)" required class="w-full px-4 py-3 bg-dark-bg border border-gray-700 rounded-lg text-white">
+                <textarea name="review" rows="4" placeholder="Your feedback…" required class="w-full px-4 py-3 bg-dark-bg border border-gray-700 rounded-lg text-white"></textarea>
+
+                <!-- Optional: vehicle + package for better social proof -->
+                <input type="text" name="vehicle" placeholder="Vehicle (e.g., 2018 RAV4)" class="w-full px-4 py-3 bg-dark-bg border border-gray-700 rounded-lg text-white">
+                <select name="package" class="w-full px-4 py-3 bg-dark-bg border border-gray-700 rounded-lg text-white">
+                  <option value="">Package used (optional)</option>
+                  <option>Basic</option>
+                  <option>Advanced</option>
+                  <option>Extreme</option>
+                  <option>Ultimate</option>
+                  <option>RV</option>
+                  <option>Marine</option>
+                </select>
+
+                <button type="submit" class="w-full bg-primary-blue text-dark-bg font-extrabold py-3 rounded-lg hover:bg-blue-500 transition">Submit Review</button>
+              </form>
+              <p class="text-xs text-gray-500 mt-3 text-center">By submitting you agree we may display your first name/initial, city and comments.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Booking/Contact Section -->
+        <section id="booking" class="py-20 sm:py-28 bg-highlight-bg border-t border-primary-blue/10">
             <div class="container mx-auto px-6 max-w-6xl">
                 <h2 class="text-4xl font-extrabold text-center mb-4 text-white">Schedule Your Spa Treatment</h2>
-                <p class="text-lg text-center text-gray-300 mb-16 max-w-2xl mx-auto">Book the **Extreme Cleaning** today for the best value and restoration results.</p>
+                <p class="text-lg text-center text-gray-300 mb-16 max-w-2xl mx-auto">Book the <strong>Extreme Cleaning</strong> today for the best value and restoration results.</p>
                 
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
                     
+                    <!-- Contact Info Block -->
                     <div class="space-y-8 p-6 bg-dark-card rounded-xl shadow-2xl shadow-black/50 border border-gray-800 h-fit">
                         <h3 class="text-2xl font-extrabold text-primary-blue">Contact Us Directly</h3>
                         
@@ -583,7 +1000,8 @@
                             <svg class="w-6 h-6 text-primary-blue flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.006 11.006 0 008.281 8.281l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-2C7.373 21 3 16.627 3 11V5z"></path></svg>
                             <div>
                                 <p class="text-gray-400">Call/Text</p>
-                                <a href="tel:+16723386915" class="text-white font-medium hover:text-primary-blue transition">(672) 338-6915</a>
+                                <!-- Visible +1 prefix for consistency -->
+                                <a href="tel:+16723386915" class="text-white font-medium hover:text-primary-blue transition">+1 (672) 338-6915</a>
                             </div>
                         </div>
                         
@@ -601,13 +1019,14 @@
                         </div>
                         
                         <a href="https://www.instagram.com/604.carspa" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-3 text-gray-400 hover:text-primary-blue transition duration-200">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.71.01 3.655.056 1.026.046 1.79.202 2.428.465.667.272 1.25.666 1.764 1.18.514.514.902 1.097 1.18 1.764.262.637.418 1.4.465 2.428.046.945.056 1.225.056 3.655s-.01 2.71-.056 3.655c-.046 1.026-.202 1.79-.465 2.428-.272.667-.666 1.25-1.18 1.764-.514.514-1.097.902-1.764 1.18-.637.262-1.4.418-2.428.465-.945.046-1.225.056-3.655.056s-2.71-.01-3.655-.056c-1.026-.046-1.79-.202-2.428-.465-.667-.272-1.25-.666-1.764-1.18-.514-.514-1.097-.902-1.18-1.764-.262-.637-.418-1.4-.465-2.428-.046-.945-.056-1.225-.056-3.655s.01-2.71.056-3.655c.046-1.026.202-1.79.465-2.428.272-.667.666-1.25 1.18-1.764.514-.514 1.097-.902 1.764-1.18.637-.262 1.4-.418 2.428-.465C9.505 2.01 9.785 2 12.215 2zm0 1.625c-2.348 0-2.527.01-3.4.053-1.01.048-1.71.196-2.18.384-.52.203-.94.47-1.35.88-.41.41-.677.83-.88 1.35-.188.47-.336 1.17-.384 2.18-.043.873-.053 1.052-.053 3.4s.01 2.527.053 3.4c.048 1.01.196 1.71.384 2.18.203.52.47.94.88 1.35.41.41.83.677 1.35.88.47.188 1.17.336 2.18.384.873.043 1.052.053 3.4.053s2.527-.01 3.4-.053c1.01-.048 1.71-.196 2.18-.384.203-.52.47-.94.88-1.35.41-.41.83-.677 1.35-.88.47-.188 1.17-.336 2.18-.384-.873-.043-1.052-.053-3.4-.053zm0 3.656a4.73 4.73 0 110 9.46 4.73 4.73 0 010-9.46zm0 1.625a3.105 3.105 0 100 6.21 3.105 3.105 0 000-6.21zm6.54-3.518a.92.92 0 11-1.84 0 .92.92 0 011.84 0z" clip-rule="evenodd" /></svg>
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.71.01 3.655.056 1.026.046 1.79.202 2.428.465.667.272 1.25.666 1.764 1.18.514.514.902 1.097 1.18 1.764.262.637.418 1.4.465 2.428.046.945.056 1.225.056 3.655s-.01 2.71-.056 3.655c-.046 1.026-.202 1.79-.465 2.428-.272.667-.666 1.25-1.18 1.764-.514.514-1.097.902-1.764 1.18-.637.262-1.4.418-2.428.465-.945.046-1.225.056-3.655.056s-2.71-.01-3.655-.056c-1.026-.046-1.79-.202-2.428-.465-.667-.272-1.25-.666-1.764-1.18-.514-.514-1.097-.902-1.764-1.18-.637-.262-1.4-.418-2.428-.465C9.505 2.01 9.785 2 12.215 2zm0 1.625c-2.348 0-2.527.01-3.4.053-1.01.048-1.71.196-2.18.384-.52.203-.94.47-1.35.88-.41.41-.677.83-.88 1.35-.188.47-.336 1.17-.384 2.18-.043.873-.053 1.052-.053 3.4s.01 2.527.053 3.4c.048 1.01.196 1.71.384 2.18.203.52.47.94.88 1.35.41.41.83.677 1.35.88.47.188 1.17.336 2.18.384.873.043 1.052.053 3.4.053s2.527-.01 3.4-.053c1.01-.048 1.71-.196 2.18-.384.203-.52.47-.94.88-1.35.41-.41.83-.677 1.35-.88.47-.188 1.17-.336 2.18-.384-.873-.043-1.052-.053-3.4-.053zm0 3.656a4.73 4.73 0 110 9.46 4.73 4.73 0 010-9.46zm0 1.625a3.105 3.105 0 100 6.21 3.105 3.105 0 000-6.21zm6.54-3.518a.92.92 0 11-1.84 0 .92.92 0 011.84 0z" clip-rule="evenodd" /></svg>
                             <span>Follow @604.carspa on Instagram</span>
                         </a>
                     </div>
 
+                    <!-- Booking Form -->
                     <div class="p-8 bg-dark-card rounded-xl shadow-2xl shadow-black/50 border border-gray-800">
-                        <form name="booking" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="space-y-6">
+                        <form name="booking" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field" class="space-y-6">
                             <input type="hidden" name="form-name" value="booking" />
                             <div hidden>
                                 <label>Don’t fill this out: <input name="bot-field" /></label>
@@ -623,7 +1042,7 @@
                             </div>
                             <div>
                                 <label for="phone" class="block text-sm font-medium text-gray-200 mb-1">Phone Number</label>
-                                <input type="tel" id="phone" name="phone" required class="w-full px-4 py-3 bg-dark-bg border border-gray-700 rounded-lg text-white focus:ring-primary-blue focus:border-primary-blue transition" placeholder="(604) 555-1234" autocomplete="tel">
+                                <input type="tel" id="phone" name="phone" required pattern="^[0-9\-\+\(\) ]{7,}$" class="w-full px-4 py-3 bg-dark-bg border border-gray-700 rounded-lg text-white focus:ring-primary-blue focus:border-primary-blue transition" placeholder="(604) 555-1234" autocomplete="tel">
                             </div>
                             
                             <div>
@@ -650,9 +1069,10 @@
                                 </select>
                             </div>
                             
+                            <!-- Utilities Requirement -->
                             <div class="pt-4 border-t border-gray-800">
                                 <p class="block text-sm font-medium text-gray-200 mb-3 font-semibold">Utilities Requirement <span class="text-red-500">*</span></p>
-                                <p class="text-xs text-gray-400 mb-3">We require access to an **outdoor water spigot** and **power outlet**.</p>
+                                <p class="text-xs text-gray-400 mb-3">We require access to an <strong>outdoor water spigot</strong> and <strong>power outlet</strong>.</p>
                                 <div class="space-y-3">
                                     <label class="flex items-center space-x-3">
                                         <input type="radio" name="utilities_provided" value="Yes, Utilities Provided" required class="h-5 w-5 bg-dark-bg border-gray-700 rounded-full transition duration-150">
@@ -665,6 +1085,7 @@
                                 </div>
                             </div>
                             
+                            <!-- Add-Ons Checkboxes -->
                             <div class="pt-4 border-t border-gray-800 transition duration-300 hover:border-primary-blue/50 hover:shadow-inner hover:shadow-primary-blue/5" id="addon-container">
                                 <p class="block text-sm font-medium text-gray-200 mb-3 font-semibold">Optional Add-Ons (Limited Time $X9 Pricing):</p>
                                 <div class="grid grid-cols-2 gap-y-3" id="addon-group">
@@ -690,11 +1111,12 @@
                                     </label>
                                 </div>
                                 <p id="addon-message" class="text-sm font-semibold mt-3 text-primary-blue hidden">
-                                    NOTE: Add-Ons are negotiable and quoted separately for **RV/Marine/Custom** packages.
+                                    NOTE: Add-Ons are negotiable and quoted separately for <strong>RV/Marine/Custom</strong> packages.
                                 </p>
                                 <p class="text-xs text-gray-600 mt-3">Final price confirmed upon booking consultation.</p>
                             </div>
 
+                            <!-- Payment Method -->
                             <div class="pt-4 border-t border-gray-800">
                                 <p class="block text-sm font-medium text-gray-200 mb-3 font-semibold">Preferred Payment Method (After Service):</p>
                                 <div class="space-y-3">
@@ -721,10 +1143,11 @@
                                 </label>
                             </div>
 
-                            <button type="submit" class="w-full bg-primary-blue text-dark-bg font-extrabold py-3 rounded-lg hover:bg-blue-500 transition duration-300 transform hover:scale-[1.01] shadow-md shadow-primary-blue/30 shimmer-button">
+                            <button type="submit" class="w-full bg-primary-blue text-dark-bg font-extrabold py-3 rounded-lg hover:bg-blue-500 transition duration-300 transform hover:scale-[1.01] shadow-md shadow-primary-blue/30 shimmer-button flex items-center justify-center" id="submit-button">
                                 SUBMIT BOOKING REQUEST
                             </button>
-                            <p id="form-message" class="text-center text-sm text-primary-blue font-semibold hidden mt-4">Thank job! Your request has been received. We'll be in touch within 2 hours.</p>
+                            <!-- Form Success/Error Message -->
+                            <p id="form-message" class="text-center text-sm text-green-400 font-semibold hidden mt-4"></p>
                         </form>
                     </div>
                 </div>
@@ -732,52 +1155,91 @@
         </section>
     </main>
 
-    <footer class="bg-black border-t-4 border-primary-blue/50 py-10">
-        <div class="container mx-auto px-6 text-center">
-             <a href="#home" class="flex flex-col items-center leading-none -space-y-1 justify-center mb-4">
+    <!-- Footer -->
+    <footer class="bg-black border-t-4 border-primary-blue/50 py-12">
+        <div class="container mx-auto px-6 text-center max-w-6xl">
+             <a href="#home" class="flex flex-col items-center leading-none -space-y-1 justify-center mb-6">
                 <div class="flex items-center justify-center">
                     <svg class="w-8 h-8 text-primary-blue mr-2" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 21s-8-8-8-12c0-4.418 3.582-8 8-8s8 3.582 8 8c0 4-8 12-8 12z" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 11c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z" fill="#1E90FF"/></svg>
                     <span class="text-4xl font-extrabold tracking-tighter text-white">604</span><span class="text-4xl font-extrabold tracking-tighter text-primary-blue font-light">carspa</span>
                 </div>
                 <p class="text-sm text-gray-500 font-light tracking-wider">Vehicle Spa Services</p>
             </a>
-            <p class="text-gray-500 text-sm mb-2">Expert Auto, RV, and Marine Detailing for Vancouver and the Lower Mainland.</p>
-            <p class="text-gray-500 text-sm mb-6"><a href="#" onclick="showModal(); return false;" class="text-primary-blue hover:underline">Service Agreement & Terms</a></p>
+            
+            <!-- Navigation and Contact Grid (New Structured Footer) -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto border-b border-gray-800 pb-8 mb-8 text-left">
+                
+                <div>
+                    <h4 class="text-lg font-extrabold text-primary-blue mb-3">Service Menu</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition">Packages</a></li>
+                        <li><a href="#addons" class="text-gray-400 hover:text-white transition">Add-Ons</a></li>
+                        <li><a href="#gallery" class="text-gray-400 hover:text-white transition">Results Gallery</a></li>
+                        <li><a href="#booking" class="text-gray-400 hover:text-white transition font-bold">Book Now</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-extrabold text-primary-blue mb-3">Company</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#reviews" class="text-gray-400 hover:text-white transition">Customer Reviews</a></li>
+                        <li><a href="#faq" class="text-gray-400 hover:text-white transition">FAQ & Policy</a></li>
+                        <li><a href="#" onclick="showModal(); return false;" class="text-gray-400 hover:text-white transition">Service Agreement</a></li>
+                        <li><p class="text-gray-400">Serving Metro Vancouver</p></li>
+                    </ul>
+                </div>
+                
+                <div class="col-span-2">
+                    <h4 class="text-lg font-extrabold text-primary-blue mb-3">Get in Touch</h4>
+                    <ul class="space-y-2 text-sm text-gray-400 text-center md:text-left">
+                        <li><a href="mailto:604carspa@gmail.com" class="hover:text-white transition">Email: 604carspa@gmail.com</a></li>
+                        <li><a href="tel:+16723386915" class="hover:text-white transition">Call/Text: +1 (672) 338-6915</a></li>
+                        <li class="pt-2">
+                            <a href="https://www.instagram.com/604.carspa" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center md:justify-start space-x-2 w-full hover:text-primary-blue transition">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.71.01 3.655.056 1.026.046 1.79.202 2.428.465.667.272 1.25.666 1.764 1.18.514.514.902 1.097 1.18 1.764.262.637.418 1.4.465 2.428.046.945.056 1.225.056 3.655s-.01 2.71-.056 3.655c-.046 1.026-.202 1.79-.465 2.428-.272.667-.666 1.25-1.18 1.764-.514.514-1.097.902-1.764 1.18-.637.262-1.4.418-2.428.465-.945.046-1.225.056-3.655.056s-2.71-.01-3.655-.056c-1.026-.046-1.79-.202-2.428-.465-.667-.272-1.25-.666-1.764-1.18-.514-.514-1.097-.902-1.764-1.18-.637-.262-1.4-.418-2.428-.465C9.505 2.01 9.785 2 12.215 2zm0 1.625c-2.348 0-2.527.01-3.4.053-1.01.048-1.71.196-2.18.384-.52.203-.94.47-1.35.88-.41.41-.677.83-.88 1.35-.188.47-.336 1.17-.384 2.18-.043.873-.053 1.052-.053 3.4s.01 2.527.053 3.4c.048 1.01.196 1.71.384 2.18.203.52.47.94.88 1.35.41.41.83.677 1.35.88.47.188 1.17.336 2.18.384.873.043 1.052.053 3.4.053s2.527-.01 3.4-.053c1.01-.048 1.71-.196 2.18-.384.203-.52.47-.94.88-1.35.41-.41.83-.677 1.35-.88.47-.188 1.17-.336 2.18-.384-.873-.043-1.052-.053-3.4-.053zm0 3.656a4.73 4.73 0 110 9.46 4.73 4.73 0 010-9.46zm0 1.625a3.105 3.105 0 100 6.21 3.105 3.105 0 000-6.21zm6.54-3.518a.92.92 0 11-1.84 0 .92.92 0 011.84 0z" clip-rule="evenodd" /></svg>
+                                <span>Follow @604.carspa on Instagram</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
 
-            <p class="text-xs text-gray-700">&copy; <span id="current-year">2024</span> 604 Car Spa. All rights reserved. | <span class="text-primary-blue">Designed for Professional Results</span></p>
+            <p class="text-xs text-gray-700 pt-4 text-center">&copy; <span id="current-year">2024</span> 604 Car Spa. All rights reserved. | <span class="text-primary-blue">Designed for Professional Results</span></p>
         </div>
     </footer>
 
-    <div id="serviceModal" class="modal">
-        <div class="modal-content p-8 rounded-xl shadow-2xl shadow-primary-blue/30 max-w-2xl">
+    <!-- Service Agreement Modal (A11Y IMPROVED) -->
+    <div id="serviceModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" tabindex="-1">
+        <!-- Added tabindex="0" to content for focus trapping target -->
+        <div class="modal-content p-8 rounded-xl shadow-2xl shadow-primary-blue/30 max-w-2xl" tabindex="0"> 
             <div class="flex justify-between items-start border-b border-gray-700 pb-4 mb-4">
-                <h3 class="text-3xl font-extrabold text-primary-blue">604 Car Spa Service Agreement</h3>
-                <button onclick="hideModal()" class="text-gray-500 hover:text-primary-blue transition text-3xl leading-none" aria-label="Close Service Agreement Modal">&times;</button>
+                <h3 id="modal-title" class="text-3xl font-extrabold text-primary-blue">604 Car Spa Service Agreement</h3>
+                <button id="modal-close" class="text-gray-500 hover:text-primary-blue transition text-3xl leading-none" aria-label="Close">&times;</button>
             </div>
             
             <div class="text-gray-300 space-y-4 text-sm max-h-[70vh] overflow-y-auto pr-4">
-                <p>This agreement outlines the terms and conditions for mobile detailing services provided by 604 Car Spa to customers in the Metro Vancouver (604) area, covering **Cars, SUVs, Pickup Trucks, RVs, and Boats**.</p>
+                <p>This agreement outlines the terms and conditions for mobile detailing services provided by 604 Car Spa to customers in the Metro Vancouver (604) area, covering <strong>Cars, SUVs, Pickup Trucks, RVs, and Boats</strong>.</p>
 
                 <h4 class="text-xl font-bold text-white pt-2">1. Booking, Fees, & Cancellations</h4>
                 <ul class="list-disc list-inside space-y-1 pl-4">
-                    <li>**Promotional Pricing:** Prices for the Basic, Advanced, and Extreme packages reflect a **limited-time promotional discount** applied to the base rate.</li>
-                    <li>**Final Price:** The price quoted is an estimate. The final price is determined upon **physical inspection** of the vehicle prior to work commencing, based on actual size, condition, and chosen add-ons (e.g., heavy pet hair, excessive mud, or biohazard). **Note: Prices are based on standard Car/Sedan size. SUVs/Pickup Trucks incur a $20 size surcharge for the Basic ($119) package only. The Advanced ($169) and Extreme ($199) packages are all-inclusive for these vehicle types.** RV and Marine services are quote-only.</li>
-                    <li>**Payment:** Payment is due upon **completion of the service** via Cash or E-transfer.</li>
-                    <li>**Rescheduling & Cancellations:** Rescheduling is **free** if notification is provided at least **2 hours** before the scheduled appointment. If the client cancels with less than 24 hours notice, a cancellation fee of $50 may be applied.</li>
+                    <li><strong>Promotional Pricing:</strong> Prices for the Basic, Advanced, and Extreme packages reflect a <strong>limited-time promotional discount</strong> applied to the base rate.</li>
+                    <li><strong>Final Price:</strong> The price quoted is an estimate. The final price is determined upon <strong>physical inspection</strong> of the vehicle prior to work commencing, based on actual size, condition, and chosen add-ons (e.g., heavy pet hair, excessive mud, or biohazard). <strong>Note: Prices are based on standard Car/Sedan size. SUVs/Pickup Trucks incur a $20 size surcharge for the Basic ($119) package only. The Advanced ($169) and Extreme ($199) packages are all-inclusive for these vehicle types.</strong> RV and Marine services are quote-only.</li>
+                    <li><strong>Payment:</strong> Payment is due upon <strong>completion of the service</strong> via Cash or E-transfer.</li>
+                    <li><strong>Rescheduling & Cancellations:</strong> Rescheduling is <strong>free</strong> if notification is provided at least **24 hours** before the scheduled appointment. If the client cancels with less than 24 hours notice, a cancellation fee of $50 may be applied.</li>
                 </ul>
 
                 <h4 class="text-xl font-bold text-white pt-2">2. Service Requirements (Mobile Detailing)</h4>
                 <ul class="list-disc list-inside space-y-1 pl-4">
-                    <li>**Utilities:** The client is **REQUIRED** to provide access to an outdoor **water spigot** and a standard **power outlet (120V)** within 50 feet of the service location to maintain our service efficiency and pricing. If the client is unable to provide either utility, they must note this during booking so 604 Car Spa can prepare accordingly.</li>
-                    <li>**Access:** Client must ensure **safe and legal access** to the vehicle at the specified location. This includes being able to open all doors, the hood, and the trunk/cabin.</li>
-                    <li>**Parking:** Client is responsible for providing **adequate parking space** for the service vehicle. For RVs/Boats, this includes sufficient working space.</li>
+                    <li><strong>Utilities:</strong> The client is <strong>REQUIRED</strong> to provide access to an outdoor <strong>water spigot</strong> and a standard <strong>power outlet (120V)</strong> within 50 feet of the service location to maintain our service efficiency and pricing. If the client is unable to provide either utility, they must note this during booking so 604 Car Spa can prepare accordingly.</li>
+                    <li><strong>Access:</strong> Client must ensure safe and legal access to the vehicle at the specified location. This includes being able to open all doors, the hood, and the trunk/cabin.</li>
+                    <li><strong>Parking:</strong> Client is responsible for providing <strong>adequate parking space</strong> for the service vehicle. For RVs/Boats, this includes sufficient working space.</li>
                 </ul>
 
                 <h4 class="text-xl font-bold text-white pt-2">3. Damage and Liability</h4>
                 <ul class="list-disc list-inside space-y-1 pl-4">
-                    <li>**Pre-existing Conditions:** 604 Car Spa is not responsible for damage caused by pre-existing conditions, including but not limited to: heavily scratched paint/gel coat, loose trim, faulty electronics, or damage from biohazards or pests.</li>
-                    <li>**Personal Items:** The client is responsible for **removing all valuable or personal belongings** from the vehicle prior to the service. We are not liable for any lost or damaged items.</li>
-                    <li>**Satisfaction Guarantee:** We offer a 100% Satisfaction Guarantee. If you are not satisfied with the quality of the service, you must notify us **before payment is rendered** so we can correct the issue immediately.</li>
+                    <li>Pre-existing Conditions: 604 Car Spa is not responsible for damage caused by pre-existing conditions, including but not limited to: heavily scratched paint/gel coat, loose trim, faulty electronics, or damage from biohazards or pests.</li>
+                    <li><strong>Personal Items:</strong> The client is responsible for <strong>removing all valuable or personal belongings</strong> from the vehicle prior to the service. We are not liable for any lost or damaged items.</li>
+                    <li><strong>Satisfaction Guarantee:</strong> We offer a 100% Satisfaction Guarantee. If you are not satisfied with the quality of the service, you must notify us <strong>before payment is rendered</strong> so we can correct the issue immediately.</li>
                 </ul>
             </div>
             <div class="flex justify-end pt-4 mt-4 border-t border-gray-700">
@@ -789,14 +1251,72 @@
         // Set the current year dynamically
         document.getElementById('current-year').textContent = new Date().getFullYear();
 
-        // Add-on Logic and Form Submission
         const serviceSelect = document.getElementById('service');
         const addonGroup = document.getElementById('addon-group');
         const addonMessage = document.getElementById('addon-message');
+        const bookingForm = document.querySelector('form[name="booking"]');
+        const submitButton = document.getElementById('submit-button');
+        const formMessage = document.getElementById('form-message');
         
+        // --- HERO CAROUSEL LOGIC (Includes Reduced Motion Guard) ---
+        // Dynamically grabbing all 6 slides by their specific IDs
+        const beforeImages = [
+            document.getElementById('before-img-0'), 
+            document.getElementById('before-img-1'), 
+            document.getElementById('before-img-2'),
+            document.getElementById('before-img-3'),
+            document.getElementById('before-img-4'),
+            document.getElementById('before-img-5'),
+        ];
+        const afterImages = [
+            document.getElementById('after-img-0'), 
+            document.getElementById('after-img-1'), 
+            document.getElementById('after-img-2'),
+            document.getElementById('after-img-3'),
+            document.getElementById('after-img-4'),
+            document.getElementById('after-img-5'),
+        ];
+        let currentSlide = 0;
+        const totalSlides = beforeImages.length;
+        const intervalTime = 2500; // 2.5 seconds
+
+        function startHeroCarousel() {
+            // Ensure only the first slide is active initially
+            beforeImages.forEach((img, index) => {
+                img.classList.remove('active');
+                afterImages[index].classList.remove('active');
+            });
+            if (beforeImages.length > 0) {
+                beforeImages[0].classList.add('active');
+                afterImages[0].classList.add('active');
+            }
+
+            setInterval(() => {
+                // Check if the document is visible before swapping (Performance)
+                if (document.hidden) return; 
+
+                // Deactivate current slide
+                beforeImages[currentSlide].classList.remove('active');
+                afterImages[currentSlide].classList.remove('active');
+
+                // Calculate next slide index
+                currentSlide = (currentSlide + 1) % totalSlides;
+
+                // Activate next slide
+                beforeImages[currentSlide].classList.add('active');
+                afterImages[currentSlide].classList.add('active');
+            }, intervalTime);
+        }
+        
+        // Start Carousel only if motion is not reduced (Performance/A11Y)
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (!reduceMotion) {
+            startHeroCarousel(); 
+        }
+        // --- END HERO CAROUSEL LOGIC ---
+
         /**
-         * The addon selection is now always visible and enabled for all auto packages.
-         * Only quote-based services get a message explaining add-ons are negotiated.
+         * Toggles the visibility of the add-on message for custom quote services.
          */
         function toggleAddons() {
             const selectedService = serviceSelect.value;
@@ -804,57 +1324,71 @@
                             selectedService.includes('Boat Detailing Quote') ||
                             selectedService.includes('Custom Quote');
 
-            const addonContainer = document.getElementById('addon-container');
-            
-            // Re-enable add-ons (they are disabled only by the previous logic/CSS opacity)
-            const checkboxes = addonGroup.querySelectorAll('input[type="checkbox"]');
-            checkboxes.forEach(checkbox => {
-                checkbox.disabled = false;
-                checkbox.closest('label').classList.remove('opacity-50', 'cursor-not-allowed');
-            });
-            addonContainer.classList.remove('opacity-70', 'pointer-events-none');
-
-            // Only show a clarifying message for quote-based services
             if (isQuote) {
-                addonMessage.innerHTML = 'NOTE: Add-Ons are negotiable and quoted separately for **RV/Marine/Custom** packages.';
                 addonMessage.classList.remove('hidden');
             } else {
                 addonMessage.classList.add('hidden');
             }
         }
 
-        // Form Submission Logic: **THE CUSTOM EVENT LISTENER HAS BEEN REMOVED**
-        // Netlify handles the submission directly now.
+        // --- MODAL FUNCTIONS (A11Y Improvements) ---
+        const modal = document.getElementById('serviceModal');
+        const modalContent = modal.querySelector('.modal-content');
+        const closeBtn = document.getElementById('modal-close');
+        let lastFocus = null;
 
-        document.addEventListener('DOMContentLoaded', () => {
-            if (serviceSelect) {
-                serviceSelect.addEventListener('change', toggleAddons);
-                toggleAddons(); // Initial run
-            }
-            
-            // Initial Gallery Tab Setup
-            setupGalleryTabs();
-        });
-
-        // Modal functions
         function showModal() {
-            document.getElementById('serviceModal').style.display = 'flex';
+            lastFocus = document.activeElement;
+            modal.style.display = 'flex';
+            // Set focus to the modal content
+            modalContent.focus(); 
+            document.addEventListener('keydown', trap);
         }
         function hideModal() {
-            document.getElementById('serviceModal').style.display = 'none';
+            modal.style.display = 'none';
+            document.removeEventListener('keydown', trap);
+            if (lastFocus) lastFocus.focus();
         }
-        // Allows clicking outside the modal to close it (for desktop)
-        document.getElementById('serviceModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                hideModal();
-            }
-        });
+        
+        function trap(e) {
+            // Escape key closes modal
+            if (e.key === 'Escape') return hideModal();
+            
+            // Tab key traps focus within the modal
+            if (e.key === 'Tab') {
+                const focusables = modal.querySelectorAll('a,button,input,textarea,select,[tabindex]:not([tabindex="-1"])');
+                const first = focusables[0];
+                const last = focusables[focusables.length - 1];
 
-        // --- NEW GALLERY TAB JAVASCRIPT ---
+                if (e.shiftKey) { 
+                    // Shift + Tab
+                    if (document.activeElement === first || document.activeElement === modalContent) { 
+                        e.preventDefault(); 
+                        last.focus(); 
+                    }
+                } else { 
+                    // Tab
+                    if (document.activeElement === last || document.activeElement === modalContent) { 
+                        e.preventDefault(); 
+                        first.focus(); 
+                    }
+                }
+            }
+        }
+        
+        // Event listeners for close button and background click
+        closeBtn.addEventListener('click', hideModal);
+        modal.addEventListener('click', e => { if (e.target === modal) hideModal(); });
+        window.showModal = showModal; // Expose to global scope for inline onclick
+
+        // --- GALLERY TAB JAVASCRIPT ---
         function setupGalleryTabs() {
             const tabs = document.querySelectorAll('.tab-button');
             const contents = document.querySelectorAll('.tab-content');
 
+            // Find the active tab based on the 'active' class
+            let initialActiveTab = document.querySelector('.tab-button.active');
+            
             tabs.forEach(tab => {
                 tab.addEventListener('click', () => {
                     const targetId = tab.getAttribute('data-tab');
@@ -871,17 +1405,149 @@
                     tab.classList.remove('text-gray-400', 'hover:text-white', 'hover:bg-dark-card');
                     
                     document.getElementById(targetId).classList.remove('hidden');
+                    
+                    // Trigger lazy load when a tab is clicked
+                    lazyLoadImages(document.getElementById(targetId));
                 });
             });
             
-            // Set initial active tab state (Exterior)
-            if (tabs.length > 0) {
-                // Ensure the default active class is set on load
-                tabs[0].classList.add('active');
-                tabs[0].classList.remove('text-gray-400', 'hover:text-white', 'hover:bg-dark-card');
+            // Manually click the initial active tab to set content display on load
+            if (initialActiveTab) {
+                initialActiveTab.click();
+            } else if (tabs.length > 0) {
+                tabs[0].click(); // Fallback to the very first tab
             }
         }
-        // --- END NEW GALLERY TAB JAVASCRIPT ---
+        
+        // --- LAZY LOADING LOGIC FOR GALLERY IMAGES (PERFORMANCE BOOST) ---
+        function lazyLoadImages(container = document) {
+            // Select all images using the data-src attribute within the specified container
+            const lazyImages = container.querySelectorAll('.gallery-img[data-src]'); 
+            const placeholderUrl = "https://placehold.co/1200x900/0A0A0A/1E90FF?text=IMAGE+LOAD+FAILED";
+
+
+            const loadAndObserve = (img) => {
+                 if (img.getAttribute('data-src')) {
+                    // Set a fallback error handler before setting the source
+                    img.onerror = () => {
+                        img.src = placeholderUrl;
+                        img.alt = "Placeholder: Detailing result image failed to load.";
+                    }
+                    
+                    // Set the actual source and remove data-src
+                    img.src = img.getAttribute('data-src');
+                    img.removeAttribute('data-src');
+                 }
+            }
+
+            if ('IntersectionObserver' in window) {
+                let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            loadAndObserve(entry.target);
+                            observer.unobserve(entry.target); 
+                        }
+                    });
+                }, {
+                    rootMargin: '0px 0px 100px 0px' // Load 100px before reaching the viewport
+                });
+
+                lazyImages.forEach(function(lazyImage) {
+                    lazyImageObserver.observe(lazyImage);
+                });
+            } else {
+                // Fallback for older browsers (load all immediately)
+                lazyImages.forEach(loadAndObserve);
+            }
+        }
+        
+        // --- FORM SUBMISSION HANDLER (Uses Fetch for Smooth UX with Netlify) ---
+        bookingForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // 1. Client-Side Validation (Required fields)
+            if (!document.getElementById('name').value || !document.getElementById('email').value || !document.getElementById('phone').value || !document.getElementById('address').value || !document.querySelector('input[name="utilities_provided"]:checked') || !document.getElementById('message').value || !document.getElementById('agree_terms').checked) {
+                formMessage.textContent = '❌ Please fill all required fields and accept the agreement.';
+                formMessage.classList.remove('hidden', 'text-green-400');
+                formMessage.classList.add('text-red-500');
+                return;
+            }
+            formMessage.classList.add('hidden');
+            
+            // 2. Setup Loading State
+            submitButton.innerHTML = '<div class="loading-spinner"></div> SENDING REQUEST...';
+            submitButton.disabled = true;
+            submitButton.classList.remove('bg-primary-blue', 'hover:bg-blue-500');
+            submitButton.classList.add('bg-gray-700');
+            
+            // 3. Prepare Data (Crucial for Netlify)
+            const data = new FormData(bookingForm);
+            
+            // Collect selected add-ons for clarity in the final email
+            const selectedAddons = [];
+            bookingForm.querySelectorAll('input[type="checkbox"][name^="addon_"]:checked').forEach(checkbox => {
+                selectedAddons.push(checkbox.value);
+            });
+            data.set('Addons_Selected', selectedAddons.join('; ') || 'None');
+            
+            // Netlify requires an URL-encoded body for AJAX submissions
+            const urlEncodedData = new URLSearchParams(data).toString();
+
+            // 4. Submit using fetch
+            try {
+                // Post to the fallback action path, which Netlify recognizes as a form submission endpoint
+                const response = await fetch(bookingForm.action, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: urlEncodedData
+                });
+
+                if (response.ok) {
+                    // Success
+                    submitButton.innerHTML = 'SUBMITTED! (Thank You)';
+                    submitButton.classList.remove('bg-gray-700', 'bg-primary-blue');
+                    submitButton.classList.add('bg-green-600', 'hover:bg-green-500');
+                    formMessage.textContent = "✅ Thank you! Your request has been received. We'll be in touch within 2 hours.";
+                    formMessage.classList.remove('hidden', 'text-red-500');
+                    formMessage.classList.add('text-green-400');
+                    bookingForm.reset(); // Clear the form on success
+                } else {
+                    // Failure
+                    throw new Error('Server form submission failed.');
+                }
+
+            } catch (error) {
+                console.error('Submission Error:', error);
+                formMessage.textContent = "❌ Error sending request. Please check your details or contact us via WhatsApp.";
+                formMessage.classList.remove('hidden', 'text-green-400');
+                formMessage.classList.add('text-red-500');
+            }
+            
+            // 5. Revert Button State (Wait 3 seconds on success, immediate on failure)
+            const isSuccess = formMessage.textContent.startsWith('✅');
+            const revertTime = isSuccess ? 3000 : 0; 
+
+            setTimeout(() => {
+                submitButton.innerHTML = 'SUBMIT BOOKING REQUEST';
+                submitButton.disabled = false;
+                submitButton.classList.remove('bg-gray-700', 'bg-green-600', 'hover:bg-green-500');
+                submitButton.classList.add('bg-primary-blue', 'hover:bg-blue-500');
+            }, revertTime);
+        });
+
+        // Initial setup on load
+        document.addEventListener('DOMContentLoaded', () => {
+            if (serviceSelect) {
+                serviceSelect.addEventListener('change', toggleAddons);
+                toggleAddons(); // Initial run
+            }
+            setupGalleryTabs();
+            // Start the Before/After Carousel
+            startHeroCarousel(); 
+            // Kick off lazy loading for elements below the viewport
+            lazyLoadImages();
+        });
     </script>
 </body>
 </html>
+
